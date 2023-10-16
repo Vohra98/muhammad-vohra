@@ -10,6 +10,8 @@ import {deskTool} from 'sanity/desk'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
 
+import project from './sanity/schemas/project-schema'
+
 export default defineConfig({
   basePath: '/studio',
   projectId,
