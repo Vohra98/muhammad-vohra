@@ -46,7 +46,7 @@ const project =  async ({ params }: Props) => {
                 <div className="mt-8">
                     {project.technologies.map((technology) => {
                         return (
-                            <span className="bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2">{technology.name}</span>
+                            <span key={technology._id} className="bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2">{technology.name}</span>
                         )
                     })}
                 </div>                
