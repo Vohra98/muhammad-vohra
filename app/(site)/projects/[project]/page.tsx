@@ -18,23 +18,26 @@ const project =  async ({ params }: Props) => {
 
     return(
         <div className="">
-            <header className="mb-10 flex items-center justify-between">
-                <div>
-                    <h1 className="text-7xl font-extrabold">
+            <header className="mb-10 ">
+                <h1 className="text-7xl font-extrabold">
                     <span className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent">{project.name}</span>
                 </h1>
-
-                <div className="mt-16 max-w-lg">
-                <PortableText
-                    value={project.content}
-                />
-                </div></div>
-                
-
-                <a className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full rounded-tr-none transition" href={project.url} target="_blank" rel="noopener noreferrer">View live site</a>
             </header>
 
+
+
             <div>
+                <div className="flex items-end justify-between gap-3 my-8">
+                    <div className="w-3/4">
+                        <PortableText
+                            value={project.content}
+                        />
+                    </div>
+                    <div className="w-1/4 flex items-center justify-end">
+                        <a className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full rounded-tr-none transition" href={project.url} target="_blank" rel="noopener noreferrer">View live site</a>
+                    </div>
+                </div>
+
                 <Image 
                   src={project.image}
                   width={1200}
@@ -49,12 +52,9 @@ const project =  async ({ params }: Props) => {
                             <span key={technology._id} className="bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2">{technology.name}</span>
                         )
                     })}
-                </div>                
-            </div>
-            
-
-
-        </div>
+                </div>   
+            </div>             
+        </div>    
         
     )
 }

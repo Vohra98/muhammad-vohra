@@ -1,5 +1,13 @@
 import { Project } from "@/types/Projects";
+import { About } from "@/types/About";
 import { client } from "./lib/client";
+import imageUrlBuilder from '@sanity/image-url'
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: any) {
+    return builder.image(source)
+}
 
 export async function getProjects(): Promise<Project[]> {
     return client.fetch(
@@ -39,5 +47,23 @@ export async function getProject(slug: string): Promise<Project> {
             blockquote,
         }`,
         {slug}
+    )
+}
+
+
+export async function getAbout(): Promise<About> {
+    return client.fetch(
+        `*[_type == "about"][0]{
+            _id,
+            _createdAt,
+            name,
+            description,
+            email,
+            years,
+            location,
+            "image": image.asset->url,
+            content
+          }
+          `
     )
 }
