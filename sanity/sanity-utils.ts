@@ -2,6 +2,7 @@ import { Project } from "@/types/Projects";
 import { About } from "@/types/About";
 import { client } from "./lib/client";
 import imageUrlBuilder from '@sanity/image-url'
+import { Experience } from "@/types/Experience";
 
 const builder = imageUrlBuilder(client);
 
@@ -65,5 +66,36 @@ export async function getAbout(): Promise<About> {
             content
           }
           `
+    )
+}
+
+
+export async function getExperiences(): Promise<Experience[]> {
+    return client.fetch(
+        `*[_type == "experience"] | order(startDate){
+            _id,
+            _createdAt,
+            companyName,
+            jobTitle,
+            startDate,
+            isCurrent,
+            endDate
+          }`
+    )
+}
+
+export async function getExperience(id: string): Promise<Experience> {
+    return client.fetch(
+        `*[_type == "experience"] && id.current == $id[0]{
+            _id,
+            _createdAt,
+            companyName,
+            jobTitle,
+            startDate,
+            isCurrent,
+            endDate,
+            content
+        }`,
+        {id}
     )
 }

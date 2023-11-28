@@ -1,8 +1,12 @@
-import Card from '@/components/card/card'
 import './globals.css'
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { getAbout } from '@/sanity/sanity-utils'
+import { Montserrat } from 'next/font/google'
+import Header from '@/components/header/Header'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: "--font-mont"
+})
 
 export const metadata: Metadata = {
   title: 'Muhammad Vohra',
@@ -14,18 +18,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const about = await getAbout();
   return (
     <html lang="en">
-      <body className="flex items-center justify-between bg-gray text-white">
-        <Card
-          name={about.name}
-          logo="M"
-          description={about.description}
-          image={about.image}
-          email={about.email}
-          location={about.location}
-        />
+      <body className={`${montserrat.variable} font-mont bg-light text-dark`}>
+        <Header />
         <main>
           {children}
         </main>
@@ -34,4 +30,5 @@ export default async function RootLayout({
     </html>
   )
 }
+
 

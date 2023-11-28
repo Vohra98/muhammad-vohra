@@ -1,11 +1,11 @@
 import { getAbout } from "@/sanity/sanity-utils";
 
-const Home = async () => {
+const Projects = async () => {
   return (
     <div className="">
-      home
+      Projects
     </div>
   )
 }
 
-export default Home;
+export default Projects;

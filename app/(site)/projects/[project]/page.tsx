@@ -14,8 +14,6 @@ const project =  async ({ params }: Props) => {
 
     const project = await getProject(slug);
 
-    console.log(project.image);
-
     return(
         <div className="">
             <header className="mb-10 ">
@@ -23,8 +21,6 @@ const project =  async ({ params }: Props) => {
                     <span className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent">{project.name}</span>
                 </h1>
             </header>
-
-
 
             <div>
                 <div className="flex items-end justify-between gap-3 my-8">
