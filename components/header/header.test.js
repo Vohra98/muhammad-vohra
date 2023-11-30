@@ -10,17 +10,28 @@ beforeEach(() => {
 
 describe("Header", () => {
   it("renders a menu button", () => {
-    expect(screen.getByRole("button")).toBeInTheDocument();
+    const menuButton = screen.getByRole("button", { name: "Open" });
+    expect(menuButton).toBeInTheDocument();
   })
 
-  it("renders a sidebar", () => {
-    
+  it("Only opens sidebar with 4 links when menu button is clicked", () => {
+    const navigation = screen.queryByRole("navigation");
+    expect(navigation).not.toBeInTheDocument();
+    const menuButton = screen.getByRole("button", { name: "Open" });
+    menuButton.click();
+    expect(within(navigation).getAllByRole("link").length).toBe(4);
+    const menu = screen.getByTestId("navigation");
+    console.log(menu);
+    expect(within(menu).getAllByRole("link").length).toBe(4);
+
   });
 
 
+
+
   // it("renders 4 links in the menu", () => {
-  //   const menu = screen.getByRole("navigation");
-  //   expect(within(menu).getAllByRole("link").length).toBe(4);
+    // const menu = screen.getByRole("navigation");
+    // expect(within(menu).getAllByRole("link").length).toBe(4);
   // });
 
   // it("renders the correct text in the links", () => {

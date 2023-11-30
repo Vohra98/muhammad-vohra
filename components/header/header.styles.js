@@ -7,7 +7,7 @@ export const HeaderWrapper = tw.div`
     items-center
 `;
 
-export const Nav = tw.nav`
+export const NavWrapper = tw.div`
     w-1/3
     flex
     items-center

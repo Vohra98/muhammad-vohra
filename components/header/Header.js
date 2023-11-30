@@ -1,60 +1,91 @@
-"use client";
+"use client"
 
 import Link from "next/link";
-import { motion, useCycle } from "framer-motion";
-import { useDimensions } from "@/utils/use-dimensions";
-import { useRef } from 'react';
+import { useState } from 'react';
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 
 import { Container } from "../global.styled";
-import { HeaderWrapper, Nav, SocialIconsWrapper} from "./header.styles";
+import { HeaderWrapper, NavWrapper, SocialIconsWrapper} from "./header.styles";
 import Logo from "./Logo";
-import MenuToggle from "./menu/MenuToggle";
-import Navigation from "./menu/Navigation";
 
-const MotionLink = motion(Link);
-const MotionNav = motion(Nav);
+const
+    MotionLink = motion(Link),
+    links = [
+        { name: "Home", to: "/", id: 1 },
+        { name: "About", to: "about", id: 2 },
+        { name: "Projects", to: "projects", id: 3 },
+        { name: "Contact", to: "contact", id: 4 },
+        { name: "Download CV", to: "/", id: 5 }
+    ],
+    sideVariants = {
+        closed: {
+          transition: {
+            staggerChildren: 0.2,
+            staggerDirection: -1
+          }
+        },
+        open: {
+          transition: {
+            staggerChildren: 0.2,
+            staggerDirection: 1
+          }
+        }
+      },
+    itemVariants = {
+        closed: {
+          opacity: 0
+        },
+        open: { opacity: 1 }
+      };
+      
 
-const sidebar = {
-    open: (height = 3000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 2
-      }
-    }),
-    closed: {
-      clipPath: "circle(30px at 40px 40px)",
-      transition: {
-        delay: 0.5,
-        type: "spring",
-        stiffness: 400,
-        damping: 40
-      }
-    }
-  };
-
+    
 
 const Header = () => {
-    const [isOpen, toggleOpen] = useCycle(false, true);
-    const containerRef = useRef(null);
-    const { height } = useDimensions(containerRef);
+    const [open, cycleOpen] = useCycle(false, true);
 
     return(
-        <header className="w-full py-8 font-medium">
+        <header className="w-full py-8 font-medium relative">
             <Container>
                 <HeaderWrapper>
-                    <MotionNav
-                        initial={false}
-                        animate={isOpen ? "open" : "closed"}
-                        custom={height}
-                        ref={containerRef}
-                    >
-                        <MenuToggle toggle={() => toggleOpen()} />
-                        <Navigation />
-                        <motion.div className="background" variants={sidebar} />
-                    </MotionNav>
-
+                    <div className="absolute top-0 h-screen left-0 bg-red-900">
+                        <AnimatePresence>
+                            {open && (
+                                <motion.nav
+                                    initial={{ width: 0 }}
+                                    animate={{ width: '300px' }}
+                                    exit={{
+                                        width: 0,
+                                        transition: { delay: 1, duration: 0.3 }
+                                      }}
+                                    className="overflow-hidden"
+                                >
+                                    <motion.div
+                                        className="flex flex-col justify-center items-center h-screen"
+                                        initial="closed"
+                                        animate="open"
+                                        exit="closed"
+                                        variants={sideVariants}
+                                        data-testid="navigation"
+                                    >
+                                        {links.map(({ name, to, id }) => (
+                                            <motion.a key={id} href={to} whileHover={{ scale: 1.1 }} variants={itemVariants}>
+                                            {name}
+                                            </motion.a>
+                                        ))}
+                                    </motion.div>
+                                    
+                                </motion.nav>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                    <NavWrapper>
+                        <div className="btn-container">
+                            <button onClick={cycleOpen}>{open ? "Close" : "Open"}</button>
+                        </div>
+                    </NavWrapper>
+                    
+                    
                     <Logo/>
 
                     <SocialIconsWrapper>
