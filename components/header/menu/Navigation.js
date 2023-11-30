@@ -11,7 +11,7 @@ const variants = {
 };
 
 const Navigation = () => (
-  <motion.ul className="absolute top-12 " variants={variants}>
+  <motion.ul className="absolute top-12 " variants={variants} data-testid="sidebar">
     {itemIds.map(item => (
       <MenuItem i={item.id} key={item.id} name={item.name} url={item.url} />
     ))}
