@@ -15,16 +15,17 @@ const MotionLink = motion(Link);
 const MotionNav = motion(Nav);
 
 const sidebar = {
-    open: (height = 3000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    open: {
+    clipPath: `inset(0 0 0 0 round 5px`,
+    duration: 1,
       transition: {
         type: "spring",
-        stiffness: 20,
-        restDelta: 2
+        stiffness: 400,
+        damping: 5000
       }
-    }),
+    },
     closed: {
-      clipPath: "circle(30px at 40px 40px)",
+    clipPath: "inset(0 236px 436px 0 round 5px)",
       transition: {
         delay: 0.5,
         type: "spring",
@@ -41,8 +42,8 @@ const Header = () => {
     const { height } = useDimensions(containerRef);
 
     return(
-        <header className="w-full py-8 font-medium">
-            <Container>
+        <header className="w-full font-medium">
+            <div className="px-8 py-4">
                 <HeaderWrapper>
                     <MotionNav
                         initial={false}
@@ -72,8 +73,7 @@ const Header = () => {
                         </MotionLink>
                     </SocialIconsWrapper>
                 </HeaderWrapper>
-                
-            </Container>
+            </div>
         </header>
     );
 };

@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem"
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
   },
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 }
@@ -11,14 +11,41 @@ const variants = {
 };
 
 const Navigation = () => (
-  <motion.ul variants={variants}>
-    {itemIds.map(i => (
-      <MenuItem i={i} key={i} />
+  <motion.ul className="absolute top-12 " variants={variants}>
+    {itemIds.map(item => (
+      <MenuItem i={item.id} key={item.id} name={item.name} url={item.url} />
     ))}
   </motion.ul>
+  
 );
 
-const itemIds = [0, 1, 2, 3, 4];
+const itemIds = [
+  {
+    name: "Home",
+    url: "/",
+    id: 0,
+  },
+  {
+    name: "About",
+    url: "/about",
+    id: 1,
+  },
+  {
+    name: "Projects",
+    url: "/projects",
+    id: 2,
+  },
+  {
+    name: "Contact",
+    url: "/contact",
+    id: 3,
+  },
+  {
+    name: "Download CV",
+    url: "/cv",
+    id: 4,
+  }
+];
 
 
 export default Navigation;

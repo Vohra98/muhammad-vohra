@@ -20,7 +20,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-mont bg-light text-dark`}>
+      <body className={`${montserrat.variable} font-mont bg-dark text-light`}>
         <Header />
         <main>
           {children}
