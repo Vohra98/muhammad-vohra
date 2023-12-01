@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const MotionLink = motion(Link);
+import { MenuIcon, MenuText } from "./menu.styles";;
 
 const variants = {
   open: {
@@ -35,14 +34,13 @@ const MenuItem = ({ i, name, url }) => {
         whileTap={{ scale: 0.95 }}
     >
       <Link
-        
         href={url}
         className="flex items-center justify-center w-full"
       >
-        <div className="icon-placeholder" style={style} />
-        <div className="text-placeholder p-2" style={style}>
+        <MenuIcon style={style} />
+        <MenuText style={style}>
           {name}
-        </div>
+        </MenuText>
       </Link>
     </motion.li>
     

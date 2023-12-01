@@ -1,18 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useCycle } from "framer-motion";
+import { motion, useCycle, AnimatePresence } from "framer-motion";
 import { useDimensions } from "@/utils/use-dimensions";
 import { useRef } from 'react';
 
-import { Container } from "../global.styled";
-import { HeaderWrapper, Nav, SocialIconsWrapper} from "./header.styles";
+import { HeaderWrapper, Nav, SocialIconsWrapper, NavBackground} from "./header.styles";
 import Logo from "./Logo";
 import MenuToggle from "./menu/MenuToggle";
 import Navigation from "./menu/Navigation";
 
 const MotionLink = motion(Link);
 const MotionNav = motion(Nav);
+const MotionNavBackground = motion(NavBackground);
 
 const sidebar = {
     open: {
@@ -35,7 +35,6 @@ const sidebar = {
     }
   };
 
-
 const Header = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
@@ -52,11 +51,19 @@ const Header = () => {
                         ref={containerRef}
                     >
                         <MenuToggle toggle={() => toggleOpen()} />
-                        <Navigation />
-                        <motion.div className="background" variants={sidebar} />
+                        <AnimatePresence>
+                            {isOpen && 
+                                <Navigation/>
+                            }
+                        </AnimatePresence>
+
+                            
+                        <MotionNavBackground className={`${isOpen ? 'z-10' : 'z-0'}`} variants={sidebar} />
+                        
                     </MotionNav>
 
-                    <Logo/>
+                    <Logo />
+                    
 
                     <SocialIconsWrapper>
                         <MotionLink data-testid="github" href="https://github.com/Vohra98" target="_blank" className='mx-8' whileHover={{
@@ -65,12 +72,12 @@ const Header = () => {
                         }}>
                             Github
                         </MotionLink>
-                        <MotionLink data-testid="linkedin" href="https://www.linkedin.com/in/muhammad-vohra-805241175" target="_blank" whileHover={{
+                        {/* <MotionLink data-testid="linkedin" href="https://www.linkedin.com/in/muhammad-vohra-805241175" target="_blank" whileHover={{
                             transform: 'translateY(-5px)',
                             transition: { duration: 0.3 },
                         }}>
                             LinkedIn
-                        </MotionLink>
+                        </MotionLink> */}
                     </SocialIconsWrapper>
                 </HeaderWrapper>
             </div>

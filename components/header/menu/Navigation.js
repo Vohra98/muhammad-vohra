@@ -1,23 +1,36 @@
 import { motion } from "framer-motion";
-import MenuItem from "./MenuItem"
+import MenuItem from "./MenuItem";
+import { MenuWrapper } from "./menu.styles";
+
+const MotionMenuWrapper = motion(MenuWrapper);
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.05, delayChildren: 0.5 },
   },
   closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  }
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
 };
 
-const Navigation = () => (
-  <motion.ul className="absolute top-12 " variants={variants} data-testid="sidebar">
-    {itemIds.map(item => (
+const Navigation = ( {className} ) => {
+
+  return (
+    <MotionMenuWrapper
+      className={`${className} absolute top-12 z-20`}
+      data-testid="sidebar"
+      variants={variants}
+      initial="closed"
+      animate="open"
+      exit="closed"
+  >
+    {itemIds.map((item) => (
       <MenuItem i={item.id} key={item.id} name={item.name} url={item.url} />
     ))}
-  </motion.ul>
-  
-);
+  </MotionMenuWrapper>
+  )
+
+};
 
 const itemIds = [
   {
@@ -44,8 +57,7 @@ const itemIds = [
     name: "Download CV",
     url: "/cv",
     id: 4,
-  }
+  },
 ];
-
 
 export default Navigation;

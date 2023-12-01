@@ -15,6 +15,17 @@ export const Nav = tw.nav`
     relative
 `;
 
+export const NavBackground = tw.div`
+    top-[-21px]
+    left-[-21px]
+    w-[300px]
+    h-[500px]
+    bg-light
+    absolute
+
+    
+`;
+
 export const StyledLink = tw(Link)`
     cursor-pointer
     relative
