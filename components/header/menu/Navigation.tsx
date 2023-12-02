@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import MenuItem from "./MenuItem";
 import { MenuWrapper } from "./menu.styles";
 
-const MotionMenuWrapper = motion(MenuWrapper);
+interface NavProps {
+  className?: string;
+};
+
+const MotionMenuWrapper : any = motion(MenuWrapper);
 
 const variants = {
   open: {
@@ -13,21 +17,20 @@ const variants = {
   },
 };
 
-const Navigation = ( {className} ) => {
+const Navigation = ( {className}: NavProps ) => {
 
   return (
     <MotionMenuWrapper
-      className={`${className} absolute top-12 z-20`}
-      data-testid="sidebar"
+      className={className}
       variants={variants}
       initial="closed"
       animate="open"
       exit="closed"
-  >
-    {itemIds.map((item) => (
-      <MenuItem i={item.id} key={item.id} name={item.name} url={item.url} />
-    ))}
-  </MotionMenuWrapper>
+    >
+      {itemIds.map((item) => (
+        <MenuItem i={item.id} name={item.name} url={item.url}  />
+      ))}
+    </MotionMenuWrapper>
   )
 
 };

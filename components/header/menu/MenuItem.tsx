@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MenuIcon, MenuText } from "./menu.styles";;
+import { MenuIcon, MenuText } from "./menu.styles";
+
+interface MenuItemProps {
+  i: number;
+  name: string;
+  url: string;
+}
+
 
 const variants = {
   open: {
@@ -21,7 +28,7 @@ const variants = {
 
 const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-const MenuItem = ({ i, name, url }) => {
+const MenuItem = ({ i, name, url } : MenuItemProps) => {
   const style = { 
     border: `2px solid ${colors[i]}`,
     color: colors[i],

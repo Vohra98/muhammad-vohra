@@ -1,16 +1,37 @@
 import { motion } from "framer-motion";
 
-const Path = props => (
+interface PathProps {
+  variants: {
+    closed: {
+        opacity?: number;
+        d?: string;
+    };
+    open: {
+        opacity?: number;
+        d?: string;
+    };
+  }
+  d? : string;
+  transition?: {
+    duration?: number;
+  }
+}
+
+interface MenuToggleProps {
+  toggle: () => void;
+}
+
+const Path = ({ variants, d, transition }: PathProps) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
     stroke="hsl(0, 0%, 18%)"
     strokeLinecap="round"
-    {...props}
+    {...{ variants, d, transition }}
   />
 );
 
-const MenuToggle = ({ toggle }) => (
+const MenuToggle = ({ toggle }: MenuToggleProps) => (
   <button onClick={toggle} data-testid="menu-button" className="z-20">
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path

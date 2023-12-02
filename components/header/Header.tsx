@@ -53,7 +53,7 @@ const Header = () => {
                         <MenuToggle toggle={() => toggleOpen()} />
                         <AnimatePresence>
                             {isOpen && 
-                                <Navigation/>
+                                <Navigation />
                             }
                         </AnimatePresence>
 

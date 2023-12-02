@@ -3,6 +3,7 @@ import { About } from "@/types/About";
 import { client } from "./lib/client";
 import imageUrlBuilder from '@sanity/image-url'
 import { Experience } from "@/types/Experience";
+import { Company } from "@/types/Company";
 
 const builder = imageUrlBuilder(client);
 
@@ -97,5 +98,16 @@ export async function getExperience(id: string): Promise<Experience> {
             content
         }`,
         {id}
+    )
+}
+
+export async function getCompanies(): Promise<Company[]> {
+    return client.fetch(
+        `*[_type == "company"]{
+            _id,
+            _createdAt,
+            name,
+            "image": image.asset->url,
+          }`
     )
 }

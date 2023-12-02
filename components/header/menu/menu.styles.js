@@ -18,4 +18,5 @@ export const MenuWrapper = tw.ul`
     position: absolute;
     top-[100px]
     w-[230px]
+    z-20
 `;
