@@ -103,11 +103,10 @@ export async function getExperience(id: string): Promise<Experience> {
 
 export async function getCompanies(): Promise<Company[]> {
     return client.fetch(
-        `*[_type == "company"]{
+        `*[_type == "companies"]{
             _id,
-            _createdAt,
             name,
-            "image": image.asset->url,
+            "logo": logo.asset->url ,
           }`
     )
 }
