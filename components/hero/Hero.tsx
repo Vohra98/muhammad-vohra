@@ -35,7 +35,7 @@ const Hero = ({ title, subtitle, companies, button }: HeroProps) => {
             </p>
           )}
           {button &&
-            <div className="pt-8">
+            <div className="my-16 lg:my-24">
                 <Button 
                     text={button.text}
                     url={button.link}
