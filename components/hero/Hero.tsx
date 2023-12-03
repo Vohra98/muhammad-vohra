@@ -4,7 +4,7 @@ import Button from "@/components/button/Button";
 import { PortableTextBlock } from "sanity";
 
 interface HeroProps {
-  title: [string, JSX.Element, string] | string;
+  title: [JSX.Element, JSX.Element, JSX.Element] | string;
   subtitle?: string;
   button? : button;
   companies?: Company[];
