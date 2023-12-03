@@ -4,6 +4,7 @@ import { MenuWrapper } from "./menu.styles";
 
 interface NavProps {
   className?: string;
+  menuclick : () => void;
 };
 
 const MotionMenuWrapper : any = motion(MenuWrapper);
@@ -17,7 +18,7 @@ const variants = {
   },
 };
 
-const Navigation = ( {className}: NavProps ) => {
+const Navigation = ( {className, menuclick }: NavProps ) => {
 
   return (
     <MotionMenuWrapper
@@ -28,7 +29,7 @@ const Navigation = ( {className}: NavProps ) => {
       exit="closed"
     >
       {itemIds.map((item) => (
-        <MenuItem key={item.id} i={item.id} name={item.name} url={item.url}  />
+        <MenuItem key={item.id} i={item.id} name={item.name} url={item.url} menuclick = {menuclick} />
       ))}
     </MotionMenuWrapper>
   )

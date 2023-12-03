@@ -40,6 +40,10 @@ const Header = () => {
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
 
+    const handleMenuToggle = () => {
+        toggleOpen();
+    };
+
     return(
         <header className="w-full font-medium">
             <div className="px-8 py-4">
@@ -53,7 +57,7 @@ const Header = () => {
                         <MenuToggle toggle={() => toggleOpen()} />
                         <AnimatePresence>
                             {isOpen && 
-                                <Navigation />
+                                <Navigation menuclick = {handleMenuToggle} />
                             }
                         </AnimatePresence>
 
