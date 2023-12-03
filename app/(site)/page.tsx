@@ -7,7 +7,7 @@ const Home = async () => {
   const companies = await getCompanies();
 
   return (
-    <>
+    <div className="pt-48">
       <div className="py-24">
           <Hero 
             title={[
@@ -52,7 +52,7 @@ const Home = async () => {
             }
           />
       </div>
-    </>
+    </div>
     
     
   )
