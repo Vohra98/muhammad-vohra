@@ -7,7 +7,7 @@ const Home = async () => {
     <div className="py-24">
         <Hero 
           title="Your vision into a reality"
-          // subtitle="Helping you with your next big project."
+          subtitle="Helping you with your next big project."
         />
     </div>
     

@@ -28,7 +28,7 @@ const Navigation = ( {className}: NavProps ) => {
       exit="closed"
     >
       {itemIds.map((item) => (
-        <MenuItem i={item.id} name={item.name} url={item.url}  />
+        <MenuItem key={item.id} i={item.id} name={item.name} url={item.url}  />
       ))}
     </MotionMenuWrapper>
   )

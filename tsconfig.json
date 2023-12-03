@@ -22,7 +22,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/card/card.test.jsx", "components/card/card.jsx", "app/(site)/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/card/card.test.jsx", "components/card/card.jsx", "app/(site)/page.tsx", "components/header/menu/MenuToggle.jsx"],
   "exclude": ["node_modules"],
   "types": ["node", "jest", "@testing-library/jest-dom"],
 }

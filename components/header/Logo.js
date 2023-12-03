@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const MotionLink = motion(Link);
 
@@ -12,7 +13,7 @@ const Logo = () => {
                 scale: 1.1,
                 transition: { duration: 0.3 },
             }}>
-                <img className="w-10" src="/images/svgs/logo.svg" alt="Logo" />
+                <Image className="w-10" width={40} height={40} src="/images/svgs/logo.svg" alt="Logo" />
             </MotionLink>
     );
 };
