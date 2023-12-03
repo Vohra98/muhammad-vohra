@@ -6,15 +6,16 @@ const Home = async () => {
 
   const companies = await getCompanies();
 
-  console.log(companies);
-
   return (
     <>
       <div className="py-24">
           <Hero 
-            title="Turning Your vision into a reality"
+            title={["Turning your ", <span className="bg-gradient-to-r from-light via-primary to-primaryDark text-transparent bg-clip-text">vision</span> , " into a reality"]}
             subtitle="Helping you with your next big project."
             companies={companies}
+            button={
+              {text: "Get Started", link: "/contact"}
+            }
           />
       </div>
     </>

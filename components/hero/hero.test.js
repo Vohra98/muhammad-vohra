@@ -7,6 +7,22 @@ beforeEach(() => {
         <Hero
             title="Test Title"
             subtitle="Test Subtitle"
+            companies={[
+                {
+                    name: "Test Company 1",
+                    logo: "test-logo-1.svg",
+                    _id: "adlkfjio28974r1"
+                },
+                {
+                    name: "Test Company 2",
+                    logo: "test-logo-2.svg",
+                    _id: "adlkfjio28974r2"
+                }
+            ]}
+            button={{
+                text: "Test Button",
+                link: "/test"
+            }}
 
         />
     );
@@ -21,12 +37,16 @@ describe("Hero", () => {
         expect(screen.getByText("Test Subtitle")).toBeInTheDocument();
     });
 
-    // it("renders a list of companies", () => {
-    //     const list = screen.getByRole("list");
-    //     const { getAllByRole } = within(list);
-    //     const items = getAllByRole("listitem");
-    //     expect(items).toHaveLength(6);
-    // });
+    it("renders a button", () => {
+        expect(screen.getByTestId("hero-button")).toBeInTheDocument();
+    });
+
+    it("renders a list of companies", () => {
+        const list = screen.getByTestId("companies-list");
+        const { getAllByRole } = within(list);
+        const items = getAllByRole("listitem");
+        expect(items).toHaveLength(2);
+    });
 
 
 }); 

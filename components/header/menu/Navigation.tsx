@@ -27,6 +27,7 @@ const Navigation = ( {className, menuclick }: NavProps ) => {
       initial="closed"
       animate="open"
       exit="closed"
+      data-testid="sidebar"
     >
       {itemIds.map((item) => (
         <MenuItem key={item.id} i={item.id} name={item.name} url={item.url} menuclick = {menuclick} />
