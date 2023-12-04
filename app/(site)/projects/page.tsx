@@ -15,7 +15,7 @@ const Projects = async () => {
         />
 
         <Container>
-          <div className="flex flex-col lg:flex-row items-center justify-center">
+          <div className="flex flex-col flex-wrap lg:flex-row items-center justify-start">
             {projects.map((project) => {
               return (
                 <ProjectCard key={project._id} project={project}/>

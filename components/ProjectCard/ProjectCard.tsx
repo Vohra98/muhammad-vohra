@@ -17,7 +17,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
     return (
         <MotionLink
-            className="flex items-center justify-between flex-col flex-wrap w-1/3 p-4 m-4 bg-[#3c296f42] rounded"
+            className="flex items-center justify-between flex-col flex-wrap w-full lg:w-5/12 p-4 my-4 lg:m-4 bg-[#3c296f42] rounded"
             whileHover={{
                 transform: 'translateY(-5px)',
                 scale: 1.1,

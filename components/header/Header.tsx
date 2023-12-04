@@ -45,7 +45,7 @@ const Header = () => {
     };
 
     return(
-        <header className="w-full font-medium fixed top-0 left-0 w-full">
+        <header className="w-full font-medium fixed top-0 left-0 w-full z-20">
             <div className="px-8 py-4">
                 <HeaderWrapper>
                     <MotionNav
