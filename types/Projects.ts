@@ -6,6 +6,7 @@ export type Project = {
     name: string;
     slug: string;
     image: string;
+    mobileImage: string;
     url: string;
     technologies: Array<{
         _id: string;

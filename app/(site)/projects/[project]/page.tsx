@@ -1,58 +1,59 @@
+"use client";
+
+import { Container } from "@/components/global.styled";
 import { getProject } from "@/sanity/sanity-utils";
-import {PortableText} from '@portabletext/react'
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
-    params: {
-        project: string;
-    }
-}
+  params: {
+    project: string;
+  };
+};
 
-const project =  async ({ params }: Props) => {
+const MotionImage = motion(Image);
 
-    const slug = params.project;
+const project = async ({ params }: Props) => {
+  const slug = params.project;
 
-    const project = await getProject(slug);
+  const project = await getProject(slug);
 
-    return(
-        <div className="">
-            <header className="mb-10 ">
-                <h1 className="text-7xl font-extrabold">
-                    <span className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent">{project.name}</span>
-                </h1>
-            </header>
+  console.log(project);
 
-            <div>
-                <div className="flex items-end justify-between gap-3 my-8">
-                    <div className="w-3/4">
-                        <PortableText
-                            value={project.content}
-                        />
-                    </div>
-                    <div className="w-1/4 flex items-center justify-end">
-                        <a className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full rounded-tr-none transition" href={project.url} target="_blank" rel="noopener noreferrer">View live site</a>
-                    </div>
-                </div>
-
-                <Image 
-                  src={project.image}
-                  width={1200}
-                  height={600}
-                  alt={project.name}
-                  className="rounded-lg border border-gray-500 object-cover"
+  return (
+    <>
+      <Container>
+        <div className="bg-dark relative">
+            <picture>
+                <source srcSet={project.image} media="(min-width: 568px)" />
+                <motion.img
+                    src={project.mobileImage}
+                    className="rounded-lg border border-gray-500 object-cover w-full"
+                    alt={project.name}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0.5 }}
+                    transition={{ delay: 0.5 }}
                 />
-
-                <div className="mt-8">
-                    {project.technologies.map((technology) => {
-                        return (
-                            <span key={technology._id} className="bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2">{technology.name}</span>
-                        )
-                    })}
-                </div>   
-            </div>             
-        </div>    
-        
-    )
-}
+            </picture>
+          <motion.div
+            className="absolute bottom-8 left-0 right-0 m-auto w-11/12 bg-light text-dark rounded"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
+            <h1>{project.name}</h1>
+            <div>
+              Technoligies
+              <div>
+                <Link href={project.url}>Vist Site</Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </Container>
+    </>
+  );
+};
 
 export default project;

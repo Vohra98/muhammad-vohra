@@ -30,7 +30,7 @@ export default async function RootLayout({
           
         </div>
         <Header />
-        <main>
+        <main className="pt-24">
           {children}
         </main>
         

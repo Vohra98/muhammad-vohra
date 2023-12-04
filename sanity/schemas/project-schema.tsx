@@ -33,6 +33,14 @@ const project = {
             ]
         },
         {
+            name: 'mobileImage',
+            title: 'Mobile Project Image',
+            type: 'image',
+            options: {
+                hotspot: false
+            },
+        },
+        {
             name: 'url',
             title: 'Project URL',
             type: 'url'

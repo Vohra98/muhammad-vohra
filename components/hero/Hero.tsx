@@ -1,13 +1,13 @@
 import { Container } from "@/components/global.styled";
 import Image from "next/image";
 import Button from "@/components/button/Button";
-import { PortableTextBlock } from "sanity";
 
 interface HeroProps {
   title: [JSX.Element, JSX.Element, JSX.Element] | string;
   subtitle?: string;
   button? : button;
   companies?: Company[];
+  position?: "center" | "left" ;
 }
 
 interface Company {
@@ -21,12 +21,12 @@ interface button {
     link: string;
 }
 
-const Hero = ({ title, subtitle, companies, button }: HeroProps) => {
+const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
   return (
-    <div className="hero">
+    <div className={`hero py-24 text-${position}`}>
       <Container>
         <div className="px-8">
-          <h1 className="text-6xl lg:text-7xl xl:text-8xl font-bold max-w-[65rem]">
+          <h1 className={`text-6xl lg:text-7xl xl:text-8xl font-bold max-w-[65rem] ${position == 'center' ? 'mx-auto text-center' : 'ml-0'}`}>
             {title}
           </h1>
           {subtitle && (
