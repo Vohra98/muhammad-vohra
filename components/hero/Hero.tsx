@@ -1,13 +1,16 @@
+"use client";
+
 import { Container } from "@/components/global.styled";
 import Image from "next/image";
 import Button from "@/components/button/Button";
+import Slider from "react-slick";
 
 interface HeroProps {
   title: [JSX.Element, JSX.Element, JSX.Element] | string;
   subtitle?: string;
-  button? : button;
+  button?: button;
   companies?: Company[];
-  position?: "center" | "left" ;
+  position?: "center" | "left";
 }
 
 interface Company {
@@ -17,16 +20,47 @@ interface Company {
 }
 
 interface button {
-    text: string;
-    link: string;
+  text: string;
+  link: string;
 }
 
 const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
+  const settings = {
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    speed: 5000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    pauseonhover: true,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2.5,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 640,
+            settings: {
+                slidesToShow: 1.5,
+                slidesToScroll: 1,
+            },
+        },
+    ],
+  };
   return (
     <div className={`hero py-24 text-${position}`}>
       <Container>
         <div className="px-8">
-          <h1 className={`text-6xl lg:text-7xl xl:text-8xl font-bold max-w-[65rem] ${position == 'center' ? 'mx-auto text-center' : 'ml-0'}`}>
+          <h1
+            className={`text-6xl lg:text-7xl xl:text-8xl font-bold max-w-[65rem] ${
+              position == "center" ? "mx-auto text-center" : "ml-0"
+            }`}
+          >
             {title}
           </h1>
           {subtitle && (
@@ -34,32 +68,35 @@ const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
               {subtitle}
             </p>
           )}
-          {button &&
+          {button && (
             <div className="my-16 lg:my-24">
-                <Button 
-                    text={button.text}
-                    url={button.link}
-                    testId="hero-button"
-                />
+              <Button
+                text={button.text}
+                url={button.link}
+                testId="hero-button"
+              />
             </div>
-          }
+          )}
           {companies && (
-            <div className="py-8">
-              <ul data-testid="companies-list" className="flex items-center justify-between flex-wrap">
-                {companies.map((company) => {
-                  return (
-                    <li key={company._id} className="p-4">
-                      <Image
-                        src={company.logo}
-                        alt={company.name}
-                        width={100}
-                        height={100}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <>
+              {/* <h5 className="text-lg text-gray font-medium">Trusted by some of the best</h5> */}
+              <div className="py-8 overflow-hidden" data-testid="companies-list">
+                <Slider {...settings} ref={(slider) => (slider = slider)}>
+                  {companies.map((company) => {
+                    return (
+                      <li key={company._id} className="p-4">
+                        <Image
+                          src={company.logo}
+                          alt={company.name}
+                          width={100}
+                          height={100}
+                        />
+                      </li>
+                    );
+                  })}
+                </Slider>
+              </div>
+            </>
           )}
         </div>
       </Container>

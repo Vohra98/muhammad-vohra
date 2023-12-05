@@ -1,5 +1,6 @@
 import { render, screen, within} from "@testing-library/react";
 import '@testing-library/jest-dom';
+
 import Hero from "./Hero";
 
 beforeEach(() => {
@@ -16,6 +17,26 @@ beforeEach(() => {
                 {
                     name: "Test Company 2",
                     logo: "test-logo-2.svg",
+                    _id: "adlkfjio28974r2"
+                },
+                {
+                    name: "Test Company 3",
+                    logo: "test-logo-3.svg",
+                    _id: "adlkfjio28974r2"
+                },
+                {
+                    name: "Test Company 4",
+                    logo: "test-logo-4.svg",
+                    _id: "adlkfjio28974r2"
+                },
+                {
+                    name: "Test Company 5",
+                    logo: "test-logo-5.svg",
+                    _id: "adlkfjio28974r2"
+                },
+                {
+                    name: "Test Company 5",
+                    logo: "test-logo-5.svg",
                     _id: "adlkfjio28974r2"
                 }
             ]}
@@ -45,7 +66,7 @@ describe("Hero", () => {
         const list = screen.getByTestId("companies-list");
         const { getAllByRole } = within(list);
         const items = getAllByRole("listitem");
-        expect(items).toHaveLength(2);
+        expect(items).toHaveLength(4);
     });
 
 

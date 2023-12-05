@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    /* background: url('../../public/background-mobile.png') no-repeat center center fixed;
-
-    @media screen and (min-width:992px) {
-        background: url('../../public/background.png') no-repeat center center fixed;
-    } */
+.slick-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

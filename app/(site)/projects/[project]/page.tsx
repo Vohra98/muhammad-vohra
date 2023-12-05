@@ -1,5 +1,5 @@
 import { Container } from "@/components/global.styled";
-import ProjectHero from "@/components/projectHero/ProjectHero";
+import ProjectHero from "@/components/projects/projectHero/ProjectHero";
 import { getProject } from "@/sanity/sanity-utils";
 
 

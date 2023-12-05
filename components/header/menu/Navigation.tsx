@@ -50,7 +50,7 @@ const itemIds = [
   },
   {
     name: "Projects",
-    url: "/projects",
+    url: "/#projects",
     id: 2,
   },
   {
