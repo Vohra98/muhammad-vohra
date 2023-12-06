@@ -3,7 +3,9 @@
 import { Project } from "@/types/Projects";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useState, useEffect, useRef} from "react";
+import Button from "@/components/button/Button";
 
 const MotionLink = motion(Link);
 
@@ -12,21 +14,43 @@ interface ProjectCardProps {
     project: Project;
 }
 
-
+function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, distance]);
+}
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+    const [paralaxSpeed, setParalaxSpeed] = useState<number>(20);
+
+    const handleResize = () => {
+        if (window.innerWidth < 1024) {
+            setParalaxSpeed(20)
+        } else {
+            setParalaxSpeed(100)
+        }
+    }
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+    })
+
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const y = useParallax(scrollYProgress, paralaxSpeed);
+
     return (
-        <div className="flex ">
-            <MotionLink
-                className="w-full lg:w-1/2 p-4 my-4 lg:m-4 bg-[#3c296f42] rounded"
-                whileHover={{
-                    transform: 'translateY(-5px)',
-                    scale: 1.1,
-                    transition: { duration: 0.3 },
-                }}
-                href={`/projects/${project.slug}`}
-            >
-                <div className="pb-4">
+        <>
+            <section className="w-full flex flex-col-reverse lg:flex-row items-center justify-center relative py-24 lg:py-[20vh]" ref={ref} >
+                <motion.div style={{ y }} className="w-1/2 my-8">
+                    <h2 className="text-2xl font-bold pb-16">{project.name}</h2>
+                    <Button 
+                        text="View Project"
+                        url={`/projects/${project.slug}`}
+                        testId="project-card-button"
+                        className="my-4"
+                    />
+                </motion.div>
+                <div className="relative overflow-hidden max-h-[90vh] h-full w-1/2">
                     <Image 
                     src={project.image}
                     width={900}
@@ -35,12 +59,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                     className="rounded-lg w-full border border-gray-500 object-cover"
                     />
                 </div>
-            </MotionLink>
-            <div className="">
-                <h2 className="text-2xl font-bold">{project.name}</h2>
-                {/* <Link href={`/projects/${project.slug}`}>View Project</Link> */}
-            </div>
-        </div>
+                
+                
+            </section>
+            
+        </>
         
     )
 };

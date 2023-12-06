@@ -3,9 +3,14 @@
 import Link from "next/link";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
 import { useDimensions } from "@/utils/use-dimensions";
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from "react";
 
-import { HeaderWrapper, Nav, SocialIconsWrapper, NavBackground} from "./header.styles";
+import {
+  HeaderWrapper,
+  Nav,
+  SocialIconsWrapper,
+  NavBackground,
+} from "./header.styles";
 import Logo from "./Logo";
 import MenuToggle from "./menu/MenuToggle";
 import Navigation from "./menu/Navigation";
@@ -15,78 +20,104 @@ const MotionNav = motion(Nav);
 const MotionNavBackground = motion(NavBackground);
 
 const sidebar = {
-    open: {
+  open: {
     clipPath: `inset(0 0 0 0 round 5px`,
     duration: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 5000
-      }
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 5000,
     },
-    closed: {
+  },
+  closed: {
     clipPath: "inset(0 236px 436px 0 round 5px)",
-      transition: {
-        delay: 0.5,
-        type: "spring",
-        stiffness: 400,
-        damping: 40
-      }
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+const Header = () => {
+  const [headerBackground, setHeaderBackground] = useState<string>("bg-transparent");
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
+
+  const listenScrollEvent = () => {
+    if (window.scrollY < 70) {
+      return setHeaderBackground("bg-transparent");
+    } else if (window.scrollY > 70) {
+      return setHeaderBackground("bg-dark");
     }
   };
 
-const Header = () => {
-    const [isOpen, toggleOpen] = useCycle(false, true);
-    const containerRef = useRef(null);
-    const { height } = useDimensions(containerRef);
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
 
-    const handleMenuToggle = () => {
-        toggleOpen();
-    };
+    return () => window.removeEventListener("scroll", listenScrollEvent);
+  }, []);
 
-    return(
-        <header className="w-full font-medium fixed top-0 left-0 w-full z-20">
-            <div className="px-8 py-4">
-                <HeaderWrapper>
-                    <MotionNav
-                        initial={false}
-                        animate={isOpen ? "open" : "closed"}
-                        custom={height}
-                        ref={containerRef}
-                    >
-                        <MenuToggle toggle={() => toggleOpen()} />
-                        <AnimatePresence>
-                            {isOpen && 
-                                <Navigation menuclick = {handleMenuToggle} />
-                            }
-                        </AnimatePresence>
+  const handleMenuToggle = () => {
+    toggleOpen();
+  };
 
-                            
-                        <MotionNavBackground className={`${isOpen ? 'z-10' : 'z-0'}`} variants={sidebar} />
-                        
-                    </MotionNav>
+  return (
+    <header
+      className={`w-full font-medium fixed top-0 left-0 z-20 transition ease-in-out duration-300 border-b-[1px] ${headerBackground}`}
+    >
+      <div className="px-8 py-4">
+        <HeaderWrapper>
+          <MotionNav
+            initial={false}
+            animate={isOpen ? "open" : "closed"}
+            custom={height}
+            ref={containerRef}
+          >
+            <MenuToggle toggle={() => toggleOpen()} />
+            <AnimatePresence>
+              {isOpen && <Navigation menuclick={handleMenuToggle} />}
+            </AnimatePresence>
 
-                    <Logo />
-                    
+            <MotionNavBackground
+              className={`${isOpen ? "z-10" : "z-0"}`}
+              variants={sidebar}
+            />
+          </MotionNav>
 
-                    <SocialIconsWrapper>
-                        <MotionLink data-testid="github" href="https://github.com/Vohra98" target="_blank" className='mx-8' whileHover={{
-                            transform: 'translateY(-5px)',
-                            transition: { duration: 0.3 },
-                        }}>
-                            Github
-                        </MotionLink>
-                        {/* <MotionLink data-testid="linkedin" href="https://www.linkedin.com/in/muhammad-vohra-805241175" target="_blank" whileHover={{
-                            transform: 'translateY(-5px)',
-                            transition: { duration: 0.3 },
-                        }}>
-                            LinkedIn
-                        </MotionLink> */}
-                    </SocialIconsWrapper>
-                </HeaderWrapper>
-            </div>
-        </header>
-    );
+          <Logo />
+
+          <SocialIconsWrapper>
+            {/* <MotionLink
+              data-testid="github"
+              href="https://github.com/Vohra98"
+              target="_blank"
+              className="mx-8"
+              whileHover={{
+                transform: "translateY(-5px)",
+                transition: { duration: 0.3 },
+              }}
+            >
+              Github
+            </MotionLink> */}
+            <MotionLink
+              data-testid="linkedin"
+              href="https://www.linkedin.com/in/muhammad-vohra-805241175"
+              target="_blank"
+              whileHover={{
+                transform: "translateY(-5px)",
+                transition: { duration: 0.3 },
+              }}
+            >
+              LinkedIn
+            </MotionLink>
+          </SocialIconsWrapper>
+        </HeaderWrapper>
+      </div>
+    </header>
+  );
 };
 
 export default Header;

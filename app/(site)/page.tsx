@@ -12,24 +12,26 @@ const Home = async () => {
 
   return (
     <>
+    <div className="min-h-screen">
       <Hero
-        title={[
-          <span key="1">Turning your </span>,
-          <span key="2"
-                className="bg-gradient-to-r from-light via-primary to-primaryDark text-transparent bg-clip-text"
-          >
-            vision
-          </span>,
-          <span key="3"> into a reality</span>,
-        ]}
-        subtitle="Helping you with your next big project."
-        companies={companies}
-        button={{ text: "Let's talk", link: "/contact" }}
-        position="left"
+          title={[
+            <span key="1">Turning your </span>,
+            <span key="2"
+                  className="bg-gradient-to-r from-light via-primary to-primaryDark text-transparent bg-clip-text"
+            >
+              vision
+            </span>,
+            <span key="3"> into a reality</span>,
+          ]}
+          subtitle="Helping you with your next big project."
+          companies={companies}
+          button={{ text: "Let's talk", link: "/contact" }}
+          position="left"
       />
+    </div>
+      
 
         <div className="bg-dark py-8">
-
           <Projects projects={projects}  />
         </div>  
         

@@ -7,3 +7,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.progress {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--accent);
+    bottom: 100px;
+  }
+  

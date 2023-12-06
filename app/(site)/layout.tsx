@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import Header from '@/components/header/Header'
-import Image from 'next/image'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -27,13 +26,11 @@ export default async function RootLayout({
             <source srcSet="/background.png" media="(min-width: 768px)" />
             <img src="/background-mobile.png" className='w-full h-full object-center object-cover' alt='background'></img>
           </picture>
-          
         </div>
         <Header />
-        <main className="pt-24">
+        <main className="">
           {children}
         </main>
-        
       </body>
     </html>
   )

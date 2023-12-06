@@ -34,7 +34,7 @@ describe("Header", () => {
   });
 
   it("renders the github and linked in social icons", () => {
-    expect(screen.getByTestId("github")).toBeInTheDocument();
+    expect(screen.getByTestId("linkedin")).toBeInTheDocument();
     // expect(screen.getByTestId('linkedin')).toBeInTheDocument();
   });
 });
