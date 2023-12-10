@@ -18,19 +18,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en" className='scroll-smooth'>
       <body className={`${montserrat.variable} font-mont bg-dark text-light relative`}>
-        <div className='fixed top-0 left-0 w-screen h-screen -z-10 '>
-          <picture>
-            <source srcSet="/background.png" media="(min-width: 768px)" />
-            <img src="/background-mobile.png" className='w-full h-full object-center object-cover' alt='background'></img>
-          </picture>
-        </div>
-        <Header />
-        <main className="">
           {children}
-        </main>
       </body>
     </html>
   )

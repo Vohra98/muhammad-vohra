@@ -53,7 +53,7 @@ const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
     ],
   };
   return (
-    <div className={`hero py-24 lg:py-56 text-${position}`}>
+    <div className={`hero py-24 lg:pt-56 text-${position}`}>
       <Container>
         <div className="px-8">
           <h1

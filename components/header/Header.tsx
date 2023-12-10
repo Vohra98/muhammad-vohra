@@ -15,6 +15,11 @@ import Logo from "./Logo";
 import MenuToggle from "./menu/MenuToggle";
 import Navigation from "./menu/Navigation";
 
+interface HeaderProps {
+    headerBackground: string;
+    textColour: string;
+};
+
 const MotionLink = motion(Link);
 const MotionNav = motion(Nav);
 const MotionNavBackground = motion(NavBackground);
@@ -40,25 +45,10 @@ const sidebar = {
   },
 };
 
-const Header = () => {
-  const [headerBackground, setHeaderBackground] = useState<string>("bg-transparent");
+const Header = ({ headerBackground, textColour}: HeaderProps) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
-
-  const listenScrollEvent = () => {
-    if (window.scrollY < 70) {
-      return setHeaderBackground("bg-transparent");
-    } else if (window.scrollY > 70) {
-      return setHeaderBackground("bg-dark");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-
-    return () => window.removeEventListener("scroll", listenScrollEvent);
-  }, []);
 
   const handleMenuToggle = () => {
     toggleOpen();
@@ -66,7 +56,7 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full font-medium fixed top-0 left-0 z-20 transition ease-in-out duration-300 border-b-[1px] ${headerBackground}`}
+      className={`w-full font-medium fixed top-0 left-0 z-20 transition ease-in-out duration-300  ${headerBackground}`}
     >
       <div className="px-8 py-4">
         <HeaderWrapper>
@@ -106,6 +96,7 @@ const Header = () => {
               data-testid="linkedin"
               href="https://www.linkedin.com/in/muhammad-vohra-805241175"
               target="_blank"
+              className={`${textColour}`}
               whileHover={{
                 transform: "translateY(-5px)",
                 transition: { duration: 0.3 },

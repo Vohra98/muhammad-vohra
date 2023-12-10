@@ -22,8 +22,6 @@ export const NavBackground = tw.div`
     h-[500px]
     bg-light
     absolute
-
-    
 `;
 
 export const StyledLink = tw(Link)`

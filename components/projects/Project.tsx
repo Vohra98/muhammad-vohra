@@ -18,17 +18,17 @@ const Projects = ({ projects }: ProjectsProps ) => {
                         className="
                             w-1/6
                             rotate-90
-                            origin-left
+                            origin-bottom-left
                             sticky
                             top-[96px]"
                     >
-                        <h3 className="text-4xl lg:text-6xl xl:text-7xl font-bold">Projects</h3>
+                        <h3 className="text-4xl lg:text-6xl xl:text-[10rem] font-bold text-[#ffffff36]">Projects</h3>
                     </div>
                     <div className="w-5/6">
                         <div className="flex-col flex-wrap lg:flex-row items-center justify-start">
-                            {projects.map((project) => {
+                            {projects.map((project, index) => {
                                 return (
-                                    <ProjectCard key={project._id} project={project} />
+                                    <ProjectCard index={index} key={project._id} project={project} />
                                 );
                             })}
                         </div>

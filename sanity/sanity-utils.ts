@@ -13,7 +13,7 @@ export function urlFor(source: any) {
 
 export async function getProjects(): Promise<Project[]> {
     return client.fetch(
-        `*[_type == "project"]{
+        `*[_type == "project"][0...3]{
             _id,
             _createdAt,
             name,
