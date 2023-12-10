@@ -16,8 +16,8 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
     return (
         <>
-            <section className={`w-full flex flex-col-reverse ${(index % 2 == 0) ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center relative py-24`}>
-                <div className={`w-1/3 my-8 ${(index % 2 == 0) ? 'ml-4' : 'mr-4'}`}>
+            <section className={`w-full flex flex-col-reverse ${(index % 2 == 0) ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center gap-8 relative mb-8`}>
+                <div className={`flex-1 my-8 `}>
                     <h2 className="text-2xl font-bold pb-8">{project.name}</h2>
                     {/* <PortableText value={project.content} /> */}
                     <div className="pb-16">Helping NASA Mission Control personnel navigate and communicate Artemis mission alterations in uncharted lunar regions</div>
@@ -28,7 +28,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                         className="my-4"
                     />
                 </div>
-                <div className={`relative overflow-hidden max-h-[90vh] h-full w-2/3 ${(index % 2 == 0) ? 'mr-4' : 'ml-4'}`}>
+                <div className={`relative overflow-hidden max-h-[90vh] h-full flex-2 `}>
                     <Image 
                     src={project.image}
                     width={900}

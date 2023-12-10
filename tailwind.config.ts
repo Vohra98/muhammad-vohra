@@ -28,6 +28,9 @@ const config: Config = {
         primary: "#8458ff",
         primaryDark: "#4400FF",
       },
+      flex: {
+        '2': '2 2 0%'
+      }
     },
   },
   plugins: [],

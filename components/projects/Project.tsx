@@ -11,7 +11,7 @@ interface ProjectsProps {
 const Projects = ({ projects }: ProjectsProps ) => {
 
     return (
-        <div id="projects" className="py-24">
+        <div id="projects" className="">
             <Container>
                 <div className="flex items-start justify-evenly relative">
                     <div
@@ -24,7 +24,7 @@ const Projects = ({ projects }: ProjectsProps ) => {
                     >
                         <h3 className="text-4xl lg:text-6xl xl:text-[10rem] font-bold text-[#ffffff36]">Projects</h3>
                     </div>
-                    <div className="w-5/6">
+                    <div className="w-5/6 mt-8 lg:mt-40">
                         <div className="flex-col flex-wrap lg:flex-row items-center justify-start">
                             {projects?.map((project, index) => {
                                 return (
