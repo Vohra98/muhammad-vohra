@@ -16,7 +16,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
     return (
         <>
-            <section className={`w-full flex flex-col-reverse ${(index % 2 == 0) ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center relative py-24 lg:py-[20vh]`}>
+            <section className={`w-full flex flex-col-reverse ${(index % 2 == 0) ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center relative py-24`}>
                 <div className={`w-1/3 my-8 ${(index % 2 == 0) ? 'ml-4' : 'mr-4'}`}>
                     <h2 className="text-2xl font-bold pb-8">{project.name}</h2>
                     {/* <PortableText value={project.content} /> */}

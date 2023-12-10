@@ -26,7 +26,7 @@ const Projects = ({ projects }: ProjectsProps ) => {
                     </div>
                     <div className="w-5/6">
                         <div className="flex-col flex-wrap lg:flex-row items-center justify-start">
-                            {projects.map((project, index) => {
+                            {projects?.map((project, index) => {
                                 return (
                                     <ProjectCard index={index} key={project._id} project={project} />
                                 );

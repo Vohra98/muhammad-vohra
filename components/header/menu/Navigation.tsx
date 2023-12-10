@@ -29,7 +29,7 @@ const Navigation = ( {className, menuclick }: NavProps ) => {
       exit="closed"
       data-testid="sidebar"
     >
-      {itemIds.map((item) => (
+      {itemIds?.map((item) => (
         <MenuItem key={item.id} i={item.id} name={item.name} url={item.url} menuclick = {menuclick} />
       ))}
     </MotionMenuWrapper>

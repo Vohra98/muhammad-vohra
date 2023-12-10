@@ -82,7 +82,7 @@ const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
               {/* <h5 className="text-lg text-gray font-medium">Trusted by some of the best</h5> */}
               <div className="py-8 overflow-hidden" data-testid="companies-list">
                 <Slider {...settings} ref={(slider) => (slider = slider)}>
-                  {companies.map((company) => {
+                  {companies?.map((company) => {
                     return (
                       <li key={company._id} className="p-4">
                         <Image
