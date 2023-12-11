@@ -99,7 +99,7 @@ export async function getAbout(): Promise<About> {
         `*[_type == "about"]{
             name,
             content,
-            image
+            "image": image.asset->url
         }`
     )
     

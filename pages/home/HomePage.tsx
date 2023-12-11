@@ -33,13 +33,13 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
     if (latest < 70) {
       return setHeaderBackground("bg-transparent"), setTextColour("text-light");
     } else if (latest > 70 && latest < 400) {
-      return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(1);
+      return setHeaderBackground("bg-light"), setTextColour("text-dark");
     } else if (latest > 400 && latest < 1200) {
       let opacity = (1 - (latest - 400) / 400);
-      return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(opacity);
+      return setBackgroundOpacity(opacity);
     } else if (latest > 1200) {
       let opacity = ((latest - 1200) / 1200);
-      return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(opacity);
+      return setBackgroundOpacity(opacity);
     }
   })
 
