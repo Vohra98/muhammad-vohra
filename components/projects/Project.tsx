@@ -20,7 +20,7 @@ const Projects = ({ projects }: ProjectsProps ) => {
                             rotate-90
                             origin-bottom-left
                             sticky
-                            top-[96px]"
+                            top-0"
                     >
                         <h3 className="text-4xl lg:text-6xl xl:text-[10rem] font-bold text-[#ffffff36]">Projects</h3>
                     </div>

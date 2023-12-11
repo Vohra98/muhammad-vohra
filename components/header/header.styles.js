@@ -7,23 +7,6 @@ export const HeaderWrapper = tw.div`
     items-center
 `;
 
-export const Nav = tw.nav`
-    w-1/3
-    flex
-    items-center
-    justify-between
-    relative
-`;
-
-export const NavBackground = tw.div`
-    top-[-21px]
-    left-[-21px]
-    w-[300px]
-    h-[500px]
-    bg-light
-    absolute
-`;
-
 export const StyledLink = tw(Link)`
     cursor-pointer
     relative

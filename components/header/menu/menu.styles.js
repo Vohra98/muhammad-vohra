@@ -20,3 +20,20 @@ export const MenuWrapper = tw.ul`
     w-[230px]
     z-20
 `;
+
+export const Nav = tw.nav`
+    w-1/3
+    flex
+    items-center
+    justify-between
+    relative
+`;
+
+export const NavBackground = tw.div`
+    top-[-23px]
+    left-[-21px]
+    w-[300px]
+    h-[500px]
+    bg-light
+    absolute
+`;

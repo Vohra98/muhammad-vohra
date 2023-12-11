@@ -5,16 +5,21 @@ import Projects from "@/components/projects/Project";
 import Header from "@/components/header/Header";
 import { Company } from "@/types/Company";
 import { Project } from "@/types/Projects";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { About } from "@/types/About";
+import AboutComponent from "@/components/aboutComponent/AboutComponent";
 
 interface HomePageProps {
     companies: Company[];
     projects: Project[];
+    about: About;
 }
 
 
-const HomePage = ({companies, projects}: HomePageProps) => {
+const HomePage = ({companies, projects, about}: HomePageProps) => {
+
+  console.log(about);
 
   const [headerBackground, setHeaderBackground] = useState("bg-transparent");
   const [textColour, setTextColour] = useState("text-light");
@@ -29,8 +34,11 @@ const HomePage = ({companies, projects}: HomePageProps) => {
       return setHeaderBackground("bg-transparent"), setTextColour("text-light");
     } else if (latest > 70 && latest < 400) {
       return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(1);
-    } else if (latest > 400) {
+    } else if (latest > 400 && latest < 1200) {
       let opacity = (1 - (latest - 400) / 400);
+      return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(opacity);
+    } else if (latest > 1200) {
+      let opacity = ((latest - 1200) / 1200);
       return setHeaderBackground("bg-light"), setTextColour("text-dark"), setBackgroundOpacity(opacity);
     }
   })
@@ -73,6 +81,10 @@ const HomePage = ({companies, projects}: HomePageProps) => {
             position="left"
           />
         </div>
+
+        {/* // About section */}
+
+        <AboutComponent  about={about} />
         
         {/* // Projects section */}
         <div className="py-8">

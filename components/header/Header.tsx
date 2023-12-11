@@ -7,10 +7,9 @@ import { useRef, useState, useEffect } from "react";
 
 import {
   HeaderWrapper,
-  Nav,
   SocialIconsWrapper,
-  NavBackground,
 } from "./header.styles";
+import { Nav, NavBackground } from "./menu/menu.styles";
 import Logo from "./Logo";
 import MenuToggle from "./menu/MenuToggle";
 import Navigation from "./menu/Navigation";
@@ -35,7 +34,7 @@ const sidebar = {
     },
   },
   closed: {
-    clipPath: "inset(0 236px 436px 0 round 5px)",
+    clipPath: "inset(12px 248px 447px 12px round 5px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -58,7 +57,7 @@ const Header = ({ headerBackground, textColour}: HeaderProps) => {
     <header
       className={`w-full font-medium fixed top-0 left-0 z-20 transition ease-in-out duration-300  ${headerBackground}`}
     >
-      <div className="px-8 py-4">
+      <div className="px-8 py-2">
         <HeaderWrapper>
           <MotionNav
             initial={false}

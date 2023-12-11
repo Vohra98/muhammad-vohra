@@ -54,25 +54,6 @@ export async function getProject(slug: string): Promise<Project> {
     )
 }
 
-
-export async function getAbout(): Promise<About> {
-    return client.fetch(
-        `*[_type == "about"][0]{
-            _id,
-            _createdAt,
-            name,
-            description,
-            email,
-            years,
-            location,
-            "image": image.asset->url,
-            content
-          }
-          `
-    )
-}
-
-
 export async function getExperiences(): Promise<Experience[]> {
     return client.fetch(
         `*[_type == "experience"] | order(startDate){
@@ -111,4 +92,15 @@ export async function getCompanies(): Promise<Company[]> {
             "logo": logo.asset->url ,
           }`
     )
+}
+
+export async function getAbout(): Promise<About> {
+    return client.fetch(
+        `*[_type == "about"]{
+            name,
+            content,
+            image
+        }`
+    )
+    
 }

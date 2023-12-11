@@ -16,14 +16,12 @@ const project = async ({ params }: Props) => {
 
   const project = await getProject(slug);
 
-  console.log(project);
-
   return (
-    <>
+    <div className="pt-32">
       <Container>
         <ProjectHero project={project} />
       </Container>
-    </>
+    </div>
   );
 };
 
