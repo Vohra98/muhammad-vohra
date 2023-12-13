@@ -84,7 +84,7 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
 
         {/* // About section */}
 
-        <AboutComponent  about={about} />
+        <AboutComponent about={about} />
         
         {/* // Projects section */}
         <div className="py-8">

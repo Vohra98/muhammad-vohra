@@ -4,10 +4,9 @@ import { Container } from '../global.styled';
 import Image from 'next/image';
 
 interface AboutProps {
-    about: [
-        About
-    ];
+    about: About
 };
+
 const AboutComponent = ({ about }: AboutProps) => {
     return (
         <>
@@ -24,7 +23,7 @@ const AboutComponent = ({ about }: AboutProps) => {
 
                                 </div>
                                 <div className='flex-1'>
-                                    <Image width={400} height={400} src={about.image} alt="muhammad Vohra memoji" />
+                                    <Image width={400} height={400} src={about.image} alt="muhammad Vohra memoji " />
                                 </div>
                             </>
                             
