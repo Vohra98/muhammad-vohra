@@ -27,19 +27,23 @@ const ProjectsCarousel = ({ projects }: ProjectsCarouselProps) => {
     <>
     <Container>
         <div className=" flex items-center justify-center">
-        <div>
-          <h2>{projects[currentProjectIndex].name}</h2>
-          <div className="">
-            <PortableText value={projects[currentProjectIndex].content} />
-          </div>
-        </div>
-        <Image
-          src={projects[currentProjectIndex].image}
-          key={currentProjectIndex}
-          alt=""
-          width={900}
-          height={300}
-        />
+            {projects && 
+                <>
+                    <div>
+                        <h2>{projects[currentProjectIndex].name}</h2>
+                        <div className="">
+                            <PortableText value={projects[currentProjectIndex].content} />
+                        </div>
+                    </div>
+                    <Image
+                        src={projects[currentProjectIndex].image}
+                        key={currentProjectIndex}
+                        alt=""
+                        width={900}
+                        height={300}    
+                    />
+                </>
+            }
       </div>
     </Container>
       
