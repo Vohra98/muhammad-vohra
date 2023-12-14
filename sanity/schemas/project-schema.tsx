@@ -23,6 +23,11 @@ const project = {
             type: 'number'
         },
         {
+            name: 'blurb',
+            title: 'Blurb',
+            type: 'string'
+        },
+        {
             name: 'image',
             title: 'Project Image',
             type: 'image',
