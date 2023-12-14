@@ -12,7 +12,7 @@ const AboutComponent = ({ about }: AboutProps) => {
         <>
             <Container>
                 <div className="min-h-screen flex flex-col-reverse lg:flex-row gap-8 items-center justify-center">
-                    {about.map((about) => {
+                    {about?.map((about) => {
                         return (
                             <>
                                 <div className="flex-1">
