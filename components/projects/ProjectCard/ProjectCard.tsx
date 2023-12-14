@@ -30,11 +30,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 </div>
                 <div className={`relative overflow-hidden max-h-[90vh] h-full flex-2 `}>
                     <Image 
-                    src={project.image}
-                    width={900}
-                    height={300}
-                    alt={project.name}
-                    className="rounded-lg w-full border border-gray-500 object-cover"
+                        src={project.image}
+                        width={900}
+                        height={300}
+                        alt={project.name}
+                        className="rounded-lg w-full border border-gray-500 object-cover"
                     />
                 </div>
                 

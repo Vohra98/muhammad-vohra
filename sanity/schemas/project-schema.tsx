@@ -18,6 +18,11 @@ const project = {
             }
         },
         {
+            name: 'order',
+            title: 'Order',
+            type: 'number'
+        },
+        {
             name: 'image',
             title: 'Project Image',
             type: 'image',
@@ -66,7 +71,16 @@ const project = {
                 {name: 'author', type: 'string', title: 'Author'},
             ]
         }
-    ]
+    ],
+    orderings: [
+        {
+            title: 'Order',
+            name: 'order',
+            by: [
+                {field: 'order', direction: 'asc'}
+            ]
+        }
+    ],
 }
 
 export default project;

@@ -5,10 +5,11 @@ import Projects from "@/components/projects/Project";
 import Header from "@/components/header/Header";
 import { Company } from "@/types/Company";
 import { Project } from "@/types/Projects";
-import { useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { About } from "@/types/About";
 import AboutComponent from "@/components/aboutComponent/AboutComponent";
+import ProjectsCarousel from "@/components/projectsCarousel/ProjectsCarousel";
 
 interface HomePageProps {
     companies: Company[];
@@ -18,9 +19,6 @@ interface HomePageProps {
 
 
 const HomePage = ({companies, projects, about}: HomePageProps) => {
-
-  console.log(about);
-
   const [headerBackground, setHeaderBackground] = useState("bg-transparent");
   const [textColour, setTextColour] = useState("text-light");
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
@@ -66,14 +64,14 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
         <div className="min-h-screen" ref={heroRef}>
           <Hero
             title={[
-              <span key="1">Turning your </span>,
+              <span key="1">Turniping your </span>,
               <span
                 key="2"
                 className="bg-gradient-to-r from-light via-primary to-primaryDark text-transparent bg-clip-text"
               >
                 vision
               </span>,
-              <span key="3"> into a reality</span>,
+              <span key="3"> into a parsnip</span>,
             ]}
             subtitle="Helping you with your next big project."
             companies={companies}
@@ -88,7 +86,8 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
         
         {/* // Projects section */}
         <div className="py-8">
-          <Projects projects={projects} />
+          {/* <Projects projects={projects} /> */}
+          <ProjectsCarousel projects={projects} />
         </div>
       </main>
     </>
