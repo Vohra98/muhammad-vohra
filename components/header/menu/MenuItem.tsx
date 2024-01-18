@@ -6,6 +6,7 @@ interface MenuItemProps {
   i: number;
   name: string;
   url: string;
+  target: string;
   menuclick: () => void;
 }
 
@@ -29,7 +30,7 @@ const variants = {
 
 const colors = ["#8458ff", "#7444fd", "#5e27fa", "#7700FF", "#5115fa"];
 
-const MenuItem = ({ i, name, url, menuclick } : MenuItemProps) => {
+const MenuItem = ({ i, name, url, target, menuclick } : MenuItemProps) => {
   const style = { 
     border: `2px solid ${colors[i]}`,
     color: colors[i],
@@ -44,6 +45,7 @@ const MenuItem = ({ i, name, url, menuclick } : MenuItemProps) => {
       <Link
         href={url}
         className="flex items-center justify-center w-full"
+        target={target}
         onClick = {() => menuclick()}
       >
         <MenuIcon style={style} />

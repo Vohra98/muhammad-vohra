@@ -30,7 +30,7 @@ const Navigation = ( {className, menuclick }: NavProps ) => {
       data-testid="sidebar"
     >
       {itemIds?.map((item) => (
-        <MenuItem key={item.id} i={item.id} name={item.name} url={item.url} menuclick = {menuclick} />
+        <MenuItem key={item.id} i={item.id} name={item.name} url={item.url} menuclick={menuclick} target={item.target}/>
       ))}
     </MotionMenuWrapper>
   )
@@ -39,29 +39,34 @@ const Navigation = ( {className, menuclick }: NavProps ) => {
 
 const itemIds = [
   {
+    id: 0,
     name: "Home",
     url: "/",
-    id: 0,
+    target: "_self"
   },
   {
-    name: "About",
-    url: "/about",
     id: 1,
+    name: "About",
+    url: "/#about",
+    target: "_self"
   },
   {
+    id: 2,
     name: "Projects",
     url: "/#projects",
-    id: 2,
+    target: "_self"
   },
   {
-    name: "Contact",
-    url: "/contact",
     id: 3,
+    name: "Contact",
+    url: "/#contact",
+    target: "_self"
   },
   {
-    name: "Download CV",
-    url: "/cv",
     id: 4,
+    name: "Download CV",
+    url: "/muhammad-vohra-cv.pdf",
+    target: "_blank"
   },
 ];
 

@@ -1,16 +1,10 @@
-import { render, screen, within} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
 
-import AboutComponent from "./AboutComponent";
-
+import About from "./About";
 
 const about = [
     {
-        name: "Test Name",
-        image: {
-            url: "test-image.png",
-            alt: "test image"
-        },
         content: [
             {
                 children: [
@@ -36,18 +30,12 @@ const about = [
     }
 ]
 
-
 beforeEach(() => {
-    render(
-        <AboutComponent about={about}/>
-    );
+    render(<About about={about}/>);
 });
 
-describe("About component", () => {
-    it("renders a gif of me", () => {
-        expect(screen.getByAltText("muhammad Vohra memoji")).toBeInTheDocument();
+describe("About", () => {
+    it("renders a title", () => {
+        expect(screen.getByTestId("title")).toBeInTheDocument();    
     });
-    it("renders a section with content in it", () => {
-        expect(screen.getByTestId('about-section')).toBeInTheDocument();
-    });
-}); 
+});

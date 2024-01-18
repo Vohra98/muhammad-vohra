@@ -4,13 +4,13 @@ import { Container } from "@/components/global.styled";
 import Image from "next/image";
 import Button from "@/components/button/Button";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
 
 interface HeroProps {
   title: [JSX.Element, JSX.Element, JSX.Element] | string;
   subtitle?: string;
   button?: button;
   companies?: Company[];
-  position?: "center" | "left";
 }
 
 interface Company {
@@ -24,7 +24,7 @@ interface button {
   link: string;
 }
 
-const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
+const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
   const settings = {
     infinite: true,
     autoplay: true,
@@ -53,34 +53,50 @@ const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
     ],
   };
   return (
-    <div className={`hero py-24 lg:pt-56 text-${position}`}>
+    <div className={`hero py-24 lg:pt-56`}>
       <Container>
         <div className="px-8">
-          <h1
-            className={`text-6xl lg:text-7xl xl:text-8xl font-bold max-w-[65rem] ${
-              position == "center" ? "mx-auto text-center" : "ml-0"
-            }`}
+          <motion.h1
+            className={`text-6xl lg:text-7xl xl:text-8xl font-bold mx-auto text-center max-w-[65rem]`}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1, duration: .5 }}
           >
             {title}
-          </h1>
+          </motion.h1>
           {subtitle && (
-            <p className="my-4 text-xl xl:text-2xl text-gray font-medium">
+            <motion.p
+              className="my-4 text-xl xl:text-2xl text-gray font-medium text-center"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.5, duration: .5 }}
+            >
               {subtitle}
-            </p>
+            </motion.p>
           )}
           {button && (
-            <div className="my-16 lg:my-24">
+            <motion.div
+              className="my-16 lg:my-24 text-center"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 2, duration: .5 }}
+            >
               <Button
                 text={button.text}
                 url={button.link}
                 testId="hero-button"
               />
-            </div>
+            </motion.div>
           )}
           {companies && (
             <>
-              {/* <h5 className="text-lg text-gray font-medium">Trusted by some of the best</h5> */}
-              <div className="py-8 overflow-hidden" data-testid="companies-list">
+              
+              <motion.div
+                className="py-8 overflow-hidden" data-testid="companies-list"
+                initial={{ x: -400, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 2.5, duration: .5 }}
+              >
                 <Slider {...settings} ref={(slider) => (slider = slider)}>
                   {companies?.map((company) => {
                     return (
@@ -95,7 +111,7 @@ const Hero = ({ title, subtitle, companies, button, position }: HeroProps) => {
                     );
                   })}
                 </Slider>
-              </div>
+              </motion.div>
             </>
           )}
         </div>

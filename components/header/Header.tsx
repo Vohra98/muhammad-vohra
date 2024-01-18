@@ -54,8 +54,10 @@ const Header = ({ headerBackground, textColour}: HeaderProps) => {
   };
 
   return (
-    <header
+    <motion.header
       className={`w-full font-medium fixed top-0 left-0 z-20 transition ease-in-out duration-300  ${headerBackground}`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
     >
       <div className="px-8 py-2">
         <HeaderWrapper>
@@ -106,7 +108,7 @@ const Header = ({ headerBackground, textColour}: HeaderProps) => {
           </SocialIconsWrapper>
         </HeaderWrapper>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

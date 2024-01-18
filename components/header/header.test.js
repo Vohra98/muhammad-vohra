@@ -1,7 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Header from "./Header";
-import exp from "constants";
 import { act } from "react-dom/test-utils";
 
 beforeEach(() => {
