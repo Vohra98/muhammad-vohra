@@ -35,12 +35,8 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
     } else if (latest > 400 && latest < 1200) {
       let opacity = (1 - (latest - 400) / 400);
       return setBackgroundOpacity(opacity);
-    } else if (latest > 1200) {
-      let opacity = ((latest - 1200) / 1200);
-      return setBackgroundOpacity(opacity);
     }
   })
-
 
     return (
         <>
@@ -64,14 +60,14 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
         <div className="min-h-screen" ref={heroRef}>
           <Hero
             title={[
-              <span key="1">Turniping your </span>,
+              <span key="1">Turning your </span>,
               <span
                 key="2"
                 className="bg-gradient-to-r from-light via-primary to-primaryDark text-transparent bg-clip-text"
               >
                 vision
               </span>,
-              <span key="3"> into a parsnip</span>,
+              <span key="3"> into a reality</span>,
             ]}
             subtitle="Helping you with your next big project."
             companies={companies}

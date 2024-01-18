@@ -68,6 +68,4 @@ describe("Hero", () => {
         const items = getAllByRole("listitem");
         expect(items).toHaveLength(4);
     });
-
-
 }); 

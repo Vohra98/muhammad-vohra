@@ -82,7 +82,7 @@ const project = {
             title: 'Order',
             name: 'order',
             by: [
-                {field: 'order', direction: 'asc'}
+                {field: 'order', direction: 'desc'}
             ]
         }
     ],

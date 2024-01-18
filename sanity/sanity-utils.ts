@@ -13,21 +13,18 @@ export function urlFor(source: any) {
 
 export async function getProjects(): Promise<Project[]> {
     return client.fetch(
-        `*[_type == "project"][0...3]{
+        `*[_type == "project"][!(_id in path("drafts.**"))] | order(_createdAt desc) {
             _id,
-            _createdAt,
             name,
-            "slug": slug.current,
+              order,
+            blurb,
             "image": image.asset->url,
             "mobileImage": mobileImage.asset->url,
-            url,
-            content,
             technologies[]->{
                 _id,
                 name,
                 experience
             },
-            blockquote,
         }`
     )
 }
