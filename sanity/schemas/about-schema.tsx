@@ -14,6 +14,21 @@ const about = {
         type: 'string'
       },
       {
+        name: 'technologies',
+        title: 'Technologies',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {
+                type: 'technologies'
+              }
+            ]
+          }
+        ]
+      },
+      {
         name: 'email',
         title: 'Email',
         type: 'string'
