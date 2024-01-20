@@ -15,7 +15,7 @@ interface SkillsProps {
 
 }
 
-type SectionContentType = "about" | "skills"
+type SectionContentType = "about" | "skills";
 
 const About = ({ about }: AboutProps) => {
   const [sectionContent, setSectionContent] = useState<SectionContentType>("about");
