@@ -10,15 +10,15 @@ interface AboutProps {
   about: About;
 }
 interface SkillsProps {
-    title: string;
-    skills: Technology[];
-
+  title: string;
+  skills: Technology[];
 }
 
 type SectionContentType = "about" | "skills";
 
 const About = ({ about }: AboutProps) => {
-  const [sectionContent, setSectionContent] = useState<SectionContentType>("about");
+  const [sectionContent, setSectionContent] =
+    useState<SectionContentType>("about");
 
   return (
     <section id="about" className="about__gradient  py-56 pb-24 z-10">
@@ -34,106 +34,104 @@ const About = ({ about }: AboutProps) => {
             Muhammad
           </h2>
           <div className="text-center my-8 text-3xl rounded-xl bg-[#8458ff24] inline-block">
-            <button 
-                onClick={() => setSectionContent("about")} 
-                data-testid="about-button"
-                className={`text-white text-lg font-bold p-2 px-8 rounded-xl focus:outline-none focus:shadow-outline ${sectionContent === "about" ? "bg-primaryDark" : ""}`}
+            <button
+              onClick={() => setSectionContent("about")}
+              data-testid="about-button"
+              className={`text-white text-lg font-bold p-2 px-8 rounded-xl focus:outline-none focus:shadow-outline ${
+                sectionContent === "about" ? "bg-primaryDark" : ""
+              }`}
             >
-                    About
+              About
             </button>
-            <button 
-                onClick={() => setSectionContent("skills")}
-                data-testid="skills-button"
-                className={`text-white text-lg font-bold p-2 px-8 rounded-xl focus:outline-none focus:shadow-outline ${sectionContent === "skills" ? "bg-primaryDark" : ""}`}
+            <button
+              onClick={() => setSectionContent("skills")}
+              data-testid="skills-button"
+              className={`text-white text-lg font-bold p-2 px-8 rounded-xl focus:outline-none focus:shadow-outline ${
+                sectionContent === "skills" ? "bg-primaryDark" : ""
+              }`}
             >
-                    Skills
+              Skills
             </button>
           </div>
 
           {sectionContent === "about" && (
             <div
-            data-testid="content"
-            className="text-xl xl:text-2xl text-center prose-strong:text-primary prose-headings:text-3xl prose-headings:pb-4"
-          >
-            {
-                about.content && (
-                    <PortableText value={about.content} />
-                )
-            }
-          </div>
+              data-testid="content"
+              className="text-xl xl:text-2xl text-center prose-strong:text-primary prose-headings:text-3xl prose-headings:pb-4"
+            >
+              Im a <strong>passionate</strong> Frontend Developer with 7 years
+              of experience crafting seamless, visually appealing{" "}
+              <strong>user experiences</strong>. I blend{" "}
+              <strong>creativity</strong> and technical expertise to create
+              engaging digital solutions that meet <strong>user needs</strong>{" "}
+              and <strong>business objectives</strong>.
+            </div>
           )}
 
           {sectionContent === "skills" && (
-                <ul className="w-full flex flex-wrap">
+            <>
+              <ul className="lg:hidden  flex w-full flex-wrap">
                 {about.technologies.map((technology) => (
-                <li
+                  <li
                     key={technology._id}
                     className="flex items-center justify-between py-4 px-8 w-full lg:w-1/2"
-                >
+                  >
                     <h5 className="flex-1 text-xl">{technology.name}</h5>
                     <div className="flex-1 w-full h-2 bg-light rounded-full">
-                    <motion.div
+                      <motion.div
                         className="h-2 rounded-full bg-primary w-full"
                         initial={{ width: 0 }}
                         animate={{ width: technology.experience + "%" }}
                         transition={{ delay: 1, duration: 1 }}
                         role="progressbar"
                         aria-label={technology.experience + "%"}
-                    ></motion.div>
+                      ></motion.div>
                     </div>
-                </li>
+                  </li>
                 ))}
-                </ul>
-                // <div className="flex items-st gap-8 justify-between text-dark">
-                //     <SkillsSection 
-                //         title="Foundational"
-                //         skills={
-                //             about.technologies
-                //                 .filter((technology) => technology.type === "foundational")
-                //                 .map((technology) => technology.name)
-                //         }
-                //     />
-                //     <SkillsSection 
-                //         title="Frontend"
-                //         skills={
-                //             about.technologies
-                //                 .filter((technology) => technology.type === "frontend")
-                //                 .map((technology) => technology.name)
-                //         }
-                //     />
-                //     <SkillsSection 
-                //         title="Tooling and Technologies"
-                //         skills={
-                //             about.technologies
-                //                 .filter((technology) => technology.type === "toolingAndTechnologies")
-                //                 .map((technology) => technology.name)
-                //         }
-                //     />
-                // </div>
-          )} 
-         
-            
-            
-            
+              </ul>
+              <div className="hidden lg:flex items-st gap-8 justify-between text-dark">
+                <SkillsSection
+                  title="Foundational"
+                  skills={about.technologies.filter(
+                    (technology) => technology.type === "foundational"
+                  )}
+                />
+                <SkillsSection
+                  title="Frontend"
+                  skills={about.technologies.filter(
+                    (technology) => technology.type === "frontend "
+                  )}
+                />
+                <SkillsSection
+                  title="Tooling and Technologies"
+                  skills={about.technologies.filter(
+                    (technology) => technology.type === "toolingAndTechnologies"
+                  )}
+                />
+              </div>
+            </>
+          )}
         </div>
       </Container>
     </section>
   );
 };
 
-const SkillsSection = ({title, skills}: SkillsProps) => {
-    return (
-        <div className="bg-light p-4 flex-1 rounded-xl">
-            <h5>{title}</h5>
-            <ul>
-                {skills.map((skill) => (
-                    <li key={skill._id}>
-                        {skill.name}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+const SkillsSection = ({ title, skills }: SkillsProps) => {
+  return (
+    <div
+      className="bg-light p-4 flex-1 rounded-xl"
+      data-testid="skills-section"
+    >
+      <h5>{title}</h5>
+      <ul>
+        {skills?.map((skill) => (
+          <li key={skill._id}>{skill.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default About;

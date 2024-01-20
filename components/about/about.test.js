@@ -32,11 +32,19 @@ const about = {
         {
             _id: "123456789",
             name: "Test",
+            type: "frontend ",
             experience: 70,
         },
         {
-            _id: "123456789",
-            name: "Test",
+            _id: "123456712",
+            name: "Test2",
+            type: "foundational",
+            experience: 70,
+        },
+        {
+            _id: "123456734",
+            name: "Test3",
+            type: "toolingAndTechnologies",
             experience: 70,
         }
     ],
@@ -63,7 +71,7 @@ describe("About", () => {
         act(() => {
             screen.getByTestId("skills-button").click();
         });
-        expect(screen.getAllByRole("listitem")).toHaveLength(2);
+        expect(screen.getAllByTestId("skills-section")).toHaveLength(3);
     });
 
     it("shows about section again after clicking about button", () => {

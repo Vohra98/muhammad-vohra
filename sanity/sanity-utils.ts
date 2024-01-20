@@ -99,6 +99,7 @@ export async function getAbout(): Promise<About> {
             technologies[]->{
                 _id,
                 name,
+                type,
                 experience
             },
         }`
