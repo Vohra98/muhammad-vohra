@@ -51,7 +51,7 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
 
       <main>
         {/* // Hero section */}
-        <div className="min-h-screen" ref={heroRef}>
+        <div className="min-h-[75vh]" ref={heroRef}>
           <Hero
             title={[
               <span key="1">Turning your </span>,

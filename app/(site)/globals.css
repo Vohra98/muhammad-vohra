@@ -8,8 +8,6 @@
     justify-content: center;
 }
 
-.progressBar {
-  &::-webkit-progress-value {
-    transition: width 1s;
-  }
+.about__gradient {
+  background: linear-gradient(180deg, transparent 0%, #000 20%);
 }
