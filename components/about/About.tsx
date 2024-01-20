@@ -4,13 +4,14 @@ import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Button from "../button/Button";
+import { Technology } from "@/types/Technology";
 
 interface AboutProps {
   about: About;
 }
 interface SkillsProps {
     title: string;
-    skills: string[];
+    skills: Technology[];
 
 }
 
@@ -122,8 +123,8 @@ const SkillsSection = ({title, skills}: SkillsProps) => {
             <h5>{title}</h5>
             <ul>
                 {skills.map((skill) => (
-                    <li>
-                        {skill}
+                    <li key={skill._id}>
+                        {skill.name}
                     </li>
                 ))}
             </ul>
