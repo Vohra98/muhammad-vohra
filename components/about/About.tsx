@@ -9,7 +9,7 @@ interface AboutProps {
 
 const About = ({ about }: AboutProps) => {
   return (
-    <section id="about" className="py-56 pb-24 about__gradient z-10">
+    <section id="about" className="about__gradient  py-56 pb-24 z-10">
       <Container>
         <div className="max-w-6xl mx-auto">
           <h2
