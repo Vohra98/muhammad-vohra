@@ -55,7 +55,7 @@ const About = ({ about }: AboutProps) => {
             data-testid="content"
             className="text-xl xl:text-2xl text-center prose-strong:text-primary prose-headings:text-3xl prose-headings:pb-4"
           >
-            <PortableText value={about.content} />
+            {/* <PortableText value={about.content} /> */}
           </div>
           )}
 
