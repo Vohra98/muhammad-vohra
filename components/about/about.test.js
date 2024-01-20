@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
+import { act } from "react-dom/test-utils";
 
 import About from "./About";
+
 
 const about = {
     content: [
@@ -49,15 +51,25 @@ describe("About", () => {
         expect(screen.getByTestId("title")).toBeInTheDocument();    
     });
 
-    it("renders a content section", () => {
+    it("render two buttons for About and skills", () => {
+        expect(screen.getAllByRole("button")).toHaveLength(2);
+    });
+
+    it("renders the about content section on first load", () => {
         expect(screen.getByTestId("content")).toBeInTheDocument();
     });
 
-    it("renders a technoligies section", () => {
+    it("shows technologies section after clicking skills button", () => {
+        act(() => {
+            screen.getByTestId("skills-button").click();
+        });
         expect(screen.getAllByRole("listitem")).toHaveLength(2);
     });
-    
-    it("renders a progress bar", () => {
-        expect(screen.getAllByRole("progressbar")).toHaveLength(2);
+
+    it("shows about section again after clicking about button", () => {
+        act(() => {
+            screen.getByTestId("about-button").click();
+        });
+        expect(screen.getByTestId("content")).toBeInTheDocument();
     });
 });

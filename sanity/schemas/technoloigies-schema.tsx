@@ -11,6 +11,18 @@ const technoliogies = {
             type: 'string'
         },
         {
+            name: 'type',
+            title: 'Technology Type',
+            type: 'string',
+            options: {
+                list: [
+                    {title: 'Foundational', value: 'foundational'},
+                    {title: 'Frontend ', value: 'frontend '},
+                    {title: 'Tooling and Technologies', value: 'toolingAndTechnologies'},
+                ]
+            }
+        },
+        {
             name: 'experience',
             title: 'Experience Percentage',
             type: 'number',
