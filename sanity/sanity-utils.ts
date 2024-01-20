@@ -93,11 +93,14 @@ export async function getCompanies(): Promise<Company[]> {
 
 export async function getAbout(): Promise<About> {
     return client.fetch(
-        `*[_type == "about"]{
+        `*[_type == "about"][0]{
             name,
             content,
-            "image": image.asset->url
+            technologies[]->{
+                _id,
+                name,
+                experience
+            },
         }`
     )
-    
 }

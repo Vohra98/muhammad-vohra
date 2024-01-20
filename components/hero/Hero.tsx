@@ -53,9 +53,9 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
     ],
   };
   return (
-    <div className={`hero py-24 lg:pt-56`}>
+    <div className={`hero py-24 lg:pt-56 fixed top-0 left-0 w-screen h-screen -z-10`}>
       <Container>
-        <div className="px-8">
+        <div className="px-8 -z-10">
           <motion.h1
             className={`text-6xl lg:text-7xl xl:text-8xl font-bold mx-auto text-center max-w-[65rem]`}
             initial={{ y: -100, opacity: 0 }}
@@ -117,6 +117,7 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
         </div>
       </Container>
     </div>
+    
   );
 };
 

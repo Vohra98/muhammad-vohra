@@ -63,7 +63,7 @@ const HomePage = ({companies, projects, about}: HomePageProps) => {
               </span>,
               <span key="3"> into a reality</span>,
             ]}
-            subtitle="Helping you with your next big project."
+            subtitle="Muhammad Vohra | Frontend Developer"
             companies={companies}
             button={{ text: "Let's talk", link: "/contact" }}
           />

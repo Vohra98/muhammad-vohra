@@ -7,3 +7,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.progressBar {
+  &::-webkit-progress-value {
+    transition: width 1s;
+  }
+}
