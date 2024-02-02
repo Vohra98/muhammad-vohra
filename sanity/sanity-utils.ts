@@ -96,6 +96,7 @@ export async function getAbout(): Promise<About> {
         `*[_type == "about"][0]{
             name,
             content,
+            "image": image.asset->url,
             technologies[]->{
                 _id,
                 name,

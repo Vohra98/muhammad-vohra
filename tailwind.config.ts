@@ -30,11 +30,12 @@ const config: Config = {
       },
       flex: {
         '2': '2 2 0%'
-      }
+      },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
+  
 }
 export default config
