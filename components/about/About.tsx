@@ -6,6 +6,7 @@ import { Technology } from "@/types/Technology";
 import Disk from "@/icons/Disk";
 import Doughnut from "@/icons/Doughnut";
 import Bullseye from "@/icons/Bullseye";
+import Image from "next/image";
 
 interface AboutProps {
   about: About;
@@ -18,6 +19,8 @@ interface SkillsProps {
 }
 
 type SectionContentType = "about" | "skills";
+
+
 
 const About = ({ about }: AboutProps) => {
   const [sectionContent, setSectionContent] = useState<SectionContentType>("about");
@@ -79,15 +82,24 @@ const About = ({ about }: AboutProps) => {
           </motion.div>
 
           {sectionContent === "about" && (
-            <div className="flex flex-col md:flex-row items-center gap-16 justify-between 2xl:max-w-[65rem] overflow-x-hidden">
+            <div className="flex flex-col md:flex-row items-center gap-16 justify-between 2xl:max-w-[65rem]">
                 <motion.div
-                    className="flex-1 w-3/4 h-3/4 md:w-[30rem] md:h-[30rem]"
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: showAnnimation ? 1 : 0, x: showAnnimation ? 0 : -100 }}
-                    transition={{ delay: AnnimationDelay, duration: .5 }}
-                >
-                    <img className="w-full h-full object-cover object-center rounded-3xl shadow-2xl shadow-indigo-500/100" src={about.image} alt="muhammad Vohra" />
-                </motion.div>
+                        className="flex-1 w-3/4 h-3/4 md:w-[30rem] md:h-[30rem]"
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: showAnnimation ? 1 : 0, x: showAnnimation ? 0 : -100 }}
+                        transition={{ delay: AnnimationDelay, duration: .5 }}
+                    >
+                        {about && (
+                            <Image
+                            className="w-full h-full object-cover object-center rounded-3xl shadow-2xl shadow-indigo-500/100"
+                            src={about.image ? about.image : "/muhammad-vohra.png"}
+                            alt="muhammad Vohra"
+                            width={500}
+                            height={500}
+                            />
+                        )}
+                        
+                    </motion.div>
                 <motion.div
                     className="flex-1 p-8 "
                     initial={{ opacity: 0, x: 100 }}
@@ -117,7 +129,6 @@ const About = ({ about }: AboutProps) => {
 
           {sectionContent === "skills" && (
             <>
-
               <div className="flex flex-col items-center gap-8 justify-between w-full ">
                 <SkillsSection
                   title="Foundational"
