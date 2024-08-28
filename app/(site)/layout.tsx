@@ -1,12 +1,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import Header from '@/components/header/Header'
+
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: "--font-mont"
 })
+
 
 export const metadata: Metadata = {
   title: 'Muhammad Vohra',

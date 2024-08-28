@@ -5,18 +5,15 @@ import Image from "next/image";
 import Button from "@/components/button/Button";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
+import Typed from 'typed.js';
+import {Company} from "@/types/Company";
+import {useEffect, useRef} from "react";
 
 interface HeroProps {
-  title: [JSX.Element, JSX.Element, JSX.Element] | string;
+  title:string[],
   subtitle?: string;
   button?: button;
   companies?: Company[];
-}
-
-interface Company {
-  _id: string;
-  name: string;
-  logo: string;
 }
 
 interface button {
@@ -52,18 +49,32 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
         },
     ],
   };
+
+  const typedTitle = useRef(null);
+
+    useEffect(() => {
+        const typyed = new Typed(typedTitle.current, {
+            strings: title,
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: false,
+            showCursor: true,
+            cursorChar: '|',
+        });
+
+        return () => {
+            typyed.destroy();
+        };
+    }, []);
   return (
     <div className={`hero py-24 lg:pt-56 fixed top-0 left-0 w-screen h-screen -z-10`}>
       <Container>
         <div className="px-8 -z-10">
-          <motion.h1
-            className={`text-6xl lg:text-7xl xl:text-8xl font-bold mx-auto text-center max-w-[65rem]`}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: .5 }}
+          <h1
+            className={`text-6xl lg:text-7xl xl:text-8xl font-bold mx-auto text-center max-w-[65rem] min-h-[100px]`}
+            ref={typedTitle}
           >
-            {title}
-          </motion.h1>
+          </h1>
           {subtitle && (
             <motion.p
               className="my-4 text-xl xl:text-2xl text-gray font-medium text-center"
