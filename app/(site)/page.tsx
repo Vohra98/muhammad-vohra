@@ -1,6 +1,7 @@
 import { getCompanies, getProjects, getAbout} from "@/sanity/sanity-utils";
 import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
+import ParalaxCards from "@/components/paralaxCards/ParalaxCards";
 
 const Home = async () => {
   const companies = await getCompanies();
@@ -34,7 +35,11 @@ const Home = async () => {
          </div>
 
          {/* // About section */}
-         <About about={about}/>
+         {/*<About about={about}/>*/}
+           <ParalaxCards
+               type="skills"
+               content={about.technologies}
+           />
 
        </main>
      </>

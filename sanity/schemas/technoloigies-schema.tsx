@@ -16,9 +16,9 @@ const technoliogies = {
             type: 'string',
             options: {
                 list: [
-                    {title: 'Foundational', value: 'foundational'},
                     {title: 'Frontend ', value: 'frontend '},
-                    {title: 'Tooling and Technologies', value: 'toolingAndTechnologies'},
+                    {title: 'Back-End and CMS', value: 'backend'},
+                    {title: 'Tooling, Testing and Quality Assurance', value: 'toolingAndTechnologies'},
                 ]
             }
         },
