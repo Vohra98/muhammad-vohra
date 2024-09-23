@@ -35,11 +35,10 @@ const Home = async () => {
          </div>
 
          {/* // About section */}
-         {/*<About about={about}/>*/}
-           <ParalaxCards
-               type="skills"
-               content={about.technologies}
-           />
+         <div className="about__gradient pt-[250px]">
+          <About />
+         </div>
+          
 
        </main>
      </>

@@ -59,7 +59,7 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
             backSpeed: 50,
             loop: false,
             showCursor: true,
-            cursorChar: '|',
+            cursorChar: '',
         });
 
         return () => {

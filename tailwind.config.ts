@@ -27,6 +27,7 @@ const config: Config = {
         gray: "#939393",
         primary: "#8458ff",
         primaryDark: "#4400FF",
+        tertiary: "#231e39",
       },
       flex: {
         '2': '2 2 0%'
