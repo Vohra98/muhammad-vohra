@@ -2,10 +2,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
+import { staggerContainer } from "@/utils/motion";
 import { styles } from '@/styles'
 import { services } from '@/constants'
 import { fadeIn, textVariant } from '@/utils/motion'
-import { SectionWrapper } from '@/hoc'
 import Image, { StaticImageData } from 'next/image'
 
 interface ServiceCardProps {
@@ -35,12 +35,19 @@ const ServiceCard = ({ title, icon, index } : ServiceCardProps) => {
  
 const About = () => {
   return (
-    <>
+    <motion.section
+        id="about"
+        variants={staggerContainer()}
+        initial='hidden'
+        whileInView='show'
+        viewport={{ once: true, amount: 0.25 }}
+        className={`${styles.paddingX} max-w-7xl mx-auto relative z-0 sm:py-12 py-20`}
+    >
       <motion.div 
         variants={textVariant()}
         className='text-center'
       >
-        <p className="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">Introduction</p>
+        <p className="sm:text-[18px] text-[14px] text-gray uppercase tracking-wider">Introduction</p>
         <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview</h2>
       </motion.div>
       <motion.p variants={fadeIn("", "", 0.1, 1)} className='mt-4 text-gray text-[20px] max-w-5xl leading-[30px] m-auto text-center'>
@@ -53,8 +60,8 @@ const About = () => {
        ))}
 
       </div>
-    </>
+    </motion.section>
   )
 }
 
-export default SectionWrapper(About, 'about')
+export default About

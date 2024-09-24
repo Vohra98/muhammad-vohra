@@ -1,48 +1,58 @@
-import { getCompanies, getProjects, getAbout} from "@/sanity/sanity-utils";
+import {
+  getCompanies,
+  getProjects,
+  getExperiences,
+} from "@/sanity/sanity-utils";
 import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
-import ParalaxCards from "@/components/paralaxCards/ParalaxCards";
+import Experiences from "@/components/experiences/Experiences";
 
 const Home = async () => {
   const companies = await getCompanies();
-  const about = await getAbout();
+  const experiences = await getExperiences();
   const projects = await getProjects();
 
   return (
-     <>
-       {/* This is the background image     */}
-       <div className="fixed top-0 left-0 w-screen h-screen -z-10 ">
-         <picture>
-           <source srcSet="/background.png" media="(min-width: 768px)" />
-           <img
-               src="/background-mobile.png"
-               className="w-full h-full object-center object-cover"
-               alt="background"
-           ></img>
-         </picture>
-       </div>
+    <>
+      {/* This is the background image     */}
+      <div className="fixed top-0 left-0 w-screen h-screen -z-10 ">
+        <picture>
+          <source srcSet="/background.png" media="(min-width: 768px)" />
+          <img
+            src="/background-mobile.png"
+            className="w-full h-full object-center object-cover"
+            alt="background"
+          ></img>
+        </picture>
+      </div>
 
+      <main>
+        {/* // Hero section */}
+        <div className="min-h-[75vh] xl:min-h-[80vh]">
+          <Hero
+            title={[
+              "Muhammad Vohra",
+              "Software Engineer",
+              "Frontend Focused",
+              "Muhammad Vohra",
+            ]}
+            subtitle="Turning your vision into a reality"
+            companies={companies}
+            button={{ text: "Let's talk", link: "/contact" }}
+          />
+        </div>
 
-       <main>
-         {/* // Hero section */}
-         <div className="min-h-[75vh] xl:min-h-[80vh]">
-           <Hero
-               title={['Muhammad Vohra', 'Software Engineer', 'Frontend Focused', 'Muhammad Vohra']}
-               subtitle="Turning your vision into a reality"
-               companies={companies}
-               button={{text: "Let's talk", link: "/contact"}}
-           />
-         </div>
-
-         {/* // About section */}
-         <div className="about__gradient pt-[250px]">
+        {/* // About section */}
+        <div className="about__gradient pt-[250px]">
           <About />
-         </div>
+        </div>
           
-
-       </main>
-     </>
-
+        {/* // Projects section */}
+        <div className="experience__gradient">
+          <Experiences experiences={experiences} />
+        </div>
+      </main>
+    </>
   );
 };
 

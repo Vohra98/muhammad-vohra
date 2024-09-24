@@ -21,15 +21,27 @@
   background: linear-gradient(180deg, transparent 0%, #0d1117 10%);
 }
 
+.experience__gradient {
+  background: linear-gradient(180deg, #0d1117 0%, #000000 10%);
+}
+
 @media screen and (min-width: 640px) {
   .about__gradient {
     background: linear-gradient(180deg, transparent 0%, #0d1117 15%);
+  }
+
+  .experience__gradient {
+    background: linear-gradient(180deg, #0d1117 0%, #000000 15%);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about__gradient {
     background: linear-gradient(180deg, transparent 0%, #0d1117 20%);
+  }
+
+  .experience__gradient {
+    background: linear-gradient(180deg, #0d1117 0%, #000000 20%);
   }
 }
 

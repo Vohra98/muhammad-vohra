@@ -8,5 +8,6 @@ export type Experience = {
     startDate: Date;
     endDate: Date;
     isCurrent: boolean;
+    logo: string;
     content: PortableTextBlock[];
 };

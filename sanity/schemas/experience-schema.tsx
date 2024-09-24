@@ -1,3 +1,4 @@
+import { title } from "process";
 import { Rule } from "sanity";
 
 const experience = {
@@ -34,7 +35,6 @@ const experience = {
         type: 'date',
         hidden: ({ document} : { document: any }) => document?.isCurrent,
         validation: (Rule: Rule) => [
-          Rule.required().error('End date is required'),
           Rule.custom((endDate: any, context: any) => {
             const startDate = context.document.startDate
             const current = context.document.isCurrent
@@ -45,6 +45,21 @@ const experience = {
             }
             return true
           }),
+        ]
+      },
+      {
+        name: 'logo',
+        title: 'Logo',
+        type: 'image',
+        options: {
+          hotspot: false
+        },
+        fields: [
+            {
+                name: 'alt',
+                title: 'Alternative Text',
+                type: 'string',
+            }
         ]
       },
       {

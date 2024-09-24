@@ -53,14 +53,16 @@ export async function getProject(slug: string): Promise<Project> {
 
 export async function getExperiences(): Promise<Experience[]> {
     return client.fetch(
-        `*[_type == "experience"] | order(startDate){
+        `*[_type == "experience"] | order(endDate desc){
             _id,
             _createdAt,
             companyName,
             jobTitle,
             startDate,
             isCurrent,
-            endDate
+            endDate,
+            content,
+            "logo": logo.asset->url,
           }`
     )
 }
