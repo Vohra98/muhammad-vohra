@@ -32,8 +32,6 @@ const Experiences = ({ experiences }: ExperiencesProps) => {
     },
   };
 
-  console.log(experiences);
-
   return (
     <motion.section
       id="experience"

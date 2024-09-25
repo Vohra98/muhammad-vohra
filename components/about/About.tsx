@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 
 import { staggerContainer } from "@/utils/motion";
 import { styles } from '@/styles'
-import { services } from '@/constants'
 import { fadeIn, textVariant } from '@/utils/motion'
 import Image, { StaticImageData } from 'next/image'
+import Technologies from '../technologies/Technologies';
 
 interface ServiceCardProps {
     title: string;
@@ -54,12 +54,7 @@ const About = () => {
         Experienced Full Stack Engineer with 8 years of expertise in front-end development and a strong background in building scalable systems. Proficient in modern frameworks like React, Next.js, and Node.js, with proven success in integrating headless CMS, leading automation projects, and optimizing complex systems for renowned companies like OakNorth Bank and Typeform. Adept at enhancing productivity, improving system reliability, and delivering user-friendly designs through innovative engineering practices and collaboration.
       </motion.p>
 
-      <div className='mt-20 flex justify-center items-stretch flex-wrap gap-10'>
-       {services.map((service, index) => (
-        <ServiceCard key={service.title} index={index} {...service}/>
-       ))}
-
-      </div>
+      <Technologies />
     </motion.section>
   )
 }

@@ -6,6 +6,7 @@ import {
 import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
 import Experiences from "@/components/experiences/Experiences";
+import Technologies from "@/components/technologies/Technologies";
 
 const Home = async () => {
   const companies = await getCompanies();
