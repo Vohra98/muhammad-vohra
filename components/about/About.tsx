@@ -41,17 +41,17 @@ const About = () => {
         initial='hidden'
         whileInView='show'
         viewport={{ once: true, amount: 0.25 }}
-        className={`${styles.paddingX} max-w-7xl mx-auto relative z-0 sm:py-12 py-20`}
+        className={`${styles.paddingX} max-w-7xl mx-auto relative z-0 sm:py-12 py-20 px-8`}
     >
       <motion.div 
         variants={textVariant()}
         className='text-center'
       >
         <p className="sm:text-[18px] text-[14px] text-gray uppercase tracking-wider">Introduction</p>
-        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview</h2>
+        <h2 className="text-white font-black md:text-[50px] sm:text-[40px] xs:text-[30px] text-[20px]">Skills Overview</h2>
       </motion.div>
-      <motion.p variants={fadeIn("", "", 0.1, 1)} className='mt-4 text-gray text-[20px] max-w-5xl leading-[30px] m-auto text-center'>
-        Experienced Full Stack Engineer with 8 years of expertise in front-end development and a strong background in building scalable systems. Proficient in modern frameworks like React, Next.js, and Node.js, with proven success in integrating headless CMS, leading automation projects, and optimizing complex systems for renowned companies like OakNorth Bank and Typeform. Adept at enhancing productivity, improving system reliability, and delivering user-friendly designs through innovative engineering practices and collaboration.
+      <motion.p variants={fadeIn("", "", 0.1, 1)} className='mt-4 text-gray text-[20px] sm:text-[24px] lg:text-[30px] max-w-5xl leading-8 m-auto text-center'>
+        Full Stack Engineer with eight years of experience and a disposition towards front-end development. 
       </motion.p>
 
       <Technologies />

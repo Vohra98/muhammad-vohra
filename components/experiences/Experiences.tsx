@@ -27,7 +27,7 @@ const Experiences = ({ experiences }: ExperiencesProps) => {
   const ptComponents = {
     list: {
       bullet: ({ children }: any) => {
-        return <ul className="list-disc pl-8 pt-4">{ children }</ul>;
+        return <ul className="list-disc pl-8 pt-4 text-[18px]">{ children }</ul>;
       },
     },
   };
@@ -40,7 +40,7 @@ const Experiences = ({ experiences }: ExperiencesProps) => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className={`${styles.paddingX} max-w-7xl mx-auto relative z-0 sm:py-12 py-20`}
+      className={`${styles.paddingX} max-w-7xl mx-auto relative z-0 sm:py-12 py-20 px-8`}
     >
       <motion.div variants={textVariant()} className="text-center">
         <p className="sm:text-[18px] text-[14px] text-gray uppercase tracking-wider">
@@ -71,7 +71,7 @@ const Experiences = ({ experiences }: ExperiencesProps) => {
               }
             >
               <div>
-                <h3 className="text-white text-[24px] font-bold">
+                <h3 className="text-white text-[30px] font-bold">
                   {experience.jobTitle}
                 </h3>
                 <p className="text-[16px] text-white font-semibold m-0">

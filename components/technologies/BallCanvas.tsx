@@ -45,6 +45,8 @@ const BallCanvas = ({icon} :BallCanvasProps) => {
       <Suspense >
         <OrbitControls
           enableZoom={false}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
         />
         <Ball imgUrl={icon.src}/>
       </Suspense>
