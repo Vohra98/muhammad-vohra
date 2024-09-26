@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import Navbar from '@/components/navBar/Navbar'
-import { BrowserRouter } from "react-router-dom"
+import Navbar from '@/components/navBar'
 
 
 const montserrat = Montserrat({
@@ -26,6 +25,7 @@ export default async function RootLayout({
     <>
       <html lang="en" className='scroll-smooth' suppressHydrationWarning>
         <body className={`${montserrat.variable} font-mont bg-dark text-light relative`}>
+            <Navbar />
             {children}
         </body>
       </html>

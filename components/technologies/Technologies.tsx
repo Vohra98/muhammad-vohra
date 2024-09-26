@@ -2,8 +2,6 @@ import { technologies } from '@/constants'
 import BallCanvas from "./BallCanvas"
 
 const Technologies = () => {
-
-  console.log(technologies);
   return (
     <div className="pt-12 flex flex-wrap items-center justify-evenly gap-12 ">
       {technologies.map((tech, i) => (

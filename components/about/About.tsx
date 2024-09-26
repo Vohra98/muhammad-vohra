@@ -6,7 +6,7 @@ import { staggerContainer } from "@/utils/motion";
 import { styles } from '@/styles'
 import { fadeIn, textVariant } from '@/utils/motion'
 import Image, { StaticImageData } from 'next/image'
-import Technologies from '../technologies/Technologies';
+import Technologies from '@/components/technologies/';
 
 interface ServiceCardProps {
     title: string;

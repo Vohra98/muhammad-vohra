@@ -3,10 +3,9 @@ import {
   getProjects,
   getExperiences,
 } from "@/sanity/sanity-utils";
-import Hero from "@/components/hero/Hero";
-import About from "@/components/about/About";
-import Experiences from "@/components/experiences/Experiences";
-import Technologies from "@/components/technologies/Technologies";
+import Hero from "@/components/hero/";
+import About from "@/components/about/";
+import Experiences from "@/components/experiences/";
 
 const Home = async () => {
   const companies = await getCompanies();

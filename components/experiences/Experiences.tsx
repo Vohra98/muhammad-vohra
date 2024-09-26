@@ -34,7 +34,7 @@ const Experiences = ({ experiences }: ExperiencesProps) => {
 
   return (
     <motion.section
-      id="experience"
+      id="experiences"
       ref={ref}
       variants={staggerContainer()}
       initial="hidden"

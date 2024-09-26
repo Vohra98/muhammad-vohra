@@ -1,3 +1,4 @@
+import { transform } from 'framer-motion'
 import type { Config } from 'tailwindcss'
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
@@ -32,6 +33,16 @@ const config: Config = {
       },
       flex: {
         '2': '2 2 0%'
+      },
+      keyframes: {
+        'border-spin': {
+          '100%' : {
+            transform: 'rotate(360deg)',
+          },
+        },
+      },
+      animation: {
+        'border-spin': 'border-spin 7s linear infinite',
       },
     },
   },
