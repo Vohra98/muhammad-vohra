@@ -30,7 +30,7 @@ const Ball = ({imgUrl} : BallProps) => {
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial color="#ff8eb" polygonOffset polygonOffsetFactor={-5} flatShading />
-        <Decal map={decal} position={[0, 0, 1]} rotation={[2 * Math.PI, 0, 6.25]}  /> //TODO: Add flatShading
+        <Decal map={decal} position={[0, 0, 1]} rotation={[2 * Math.PI, 0, 6.25]}  />
       </mesh>
     </Float>
   )
