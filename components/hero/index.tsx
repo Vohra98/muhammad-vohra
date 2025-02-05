@@ -52,8 +52,9 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
 
   const typedTitle = useRef(null);
 
+     
     useEffect(() => {
-        const typyed = new Typed(typedTitle.current, {
+        const typyed = new Typed(typedTitle.current, {  
             strings: title,
             typeSpeed: 50,
             backSpeed: 50,
@@ -74,6 +75,7 @@ const Hero = ({ title, subtitle, companies, button, }: HeroProps) => {
             className={`text-6xl lg:text-7xl xl:text-8xl font-bold mx-auto text-center max-w-[65rem] min-h-[100px]`}
             ref={typedTitle}
           >
+            
           </h1>
           {subtitle && (
             <motion.p

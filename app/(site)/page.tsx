@@ -3,10 +3,7 @@ import {
   getProjects,
   getExperiences,
 } from "@/sanity/sanity-utils";
-import Hero from "@/components/hero/";
-import About from "@/components/about/";
-import Experiences from "@/components/experiences/";
-
+import Hero from "@/components/hero/index";
 const Home = async () => {
   const companies = await getCompanies();
   const experiences = await getExperiences();
@@ -40,16 +37,6 @@ const Home = async () => {
             companies={companies}
             button={{ text: "Let's talk", link: "/contact" }}
           />
-        </div>
-
-        {/* // About section */}
-        <div className="about__gradient pt-[250px]">
-          <About />
-        </div>
-          
-        {/* // Projects section */}
-        <div className="experience__gradient">
-          <Experiences experiences={experiences} />
         </div>
       </main>
     </>

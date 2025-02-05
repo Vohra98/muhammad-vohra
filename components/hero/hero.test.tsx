@@ -1,12 +1,17 @@
 import { render, screen, within} from "@testing-library/react";
 import '@testing-library/jest-dom';
 
-import Hero from "./Hero";
+import Hero from "./index";
 
 beforeEach(() => {
     render(
         <Hero
-            title="Test Title"
+            title={[
+                "Test Title 1",
+                "Test Title 2",
+                "Test Title 3",
+                "Test Title 4"
+            ]}
             subtitle="Test Subtitle"
             companies={[
                 {
@@ -51,7 +56,7 @@ beforeEach(() => {
 
 describe("Hero", () => {
     it("renders a hero section with a title", () => {
-        expect(screen.getByText("Test Title")).toBeInTheDocument();
+        expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     });
 
     it("renders a subtitle", () => {
